@@ -1904,7 +1904,7 @@ function soundsView(){
   cb.addEventListener("change",()=>{S.clusters=cb.checked;save();render()});
   sets.append(el("div",{class:"gset",style:"border-top:2px dashed var(--hair);padding-top:12px"},
     el("label",{class:"switch",for:"clusters"},cb,"Include words with two consonants together, such as mint, damp and train"),
-    el("p",{class:"note",text:"Little Wandle teaches these properly in the Reception summer term (Phase 4). ⟦Her⟧ reading books use some already. Untick if ⟦she⟧ finds them hard, and they will wait."})));
+    el("p",{class:"note",text:state.year==="Y1"?"School teaches these in the Reception summer term (Phase 4), so ⟦she⟧ will have met them by now. Leave this on.":curTerm()==="summer"?"School teaches these this term (Reception summer, Phase 4), so leave this on.":"School teaches these in the Reception summer term (Phase 4), though some early reading books use a few sooner. Leave this on if ⟦she⟧ manages them, or untick it and they will wait until you switch it back on."})));
   left.append(sets);
 
   // Next set preview
