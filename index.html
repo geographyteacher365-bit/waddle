@@ -6,14 +6,14 @@
 <meta name="theme-color" content="#E0336F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Reading">
+<meta name="apple-mobile-web-app-title" content="Waddle">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
 <link rel="icon" type="image/png" href="icon-192.png">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,-apple-system,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
 </head>
 <body>
-<title>Reading and Numbers</title>
+<title>Waddle</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Andika:wght@400;700&family=Fredoka:wght@500;600&family=Atkinson+Hyperlegible:wght@400;700&display=swap">
@@ -175,6 +175,7 @@ button.g{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .btn.danger{background:var(--help);color:var(--on-btn)}
 details.panel:not([open]){gap:0}
 details.panel summary{cursor:pointer;font:600 17px var(--font-head)}
+.bookpanel summary .opt{font:400 14px var(--font-adult);color:var(--muted)}
 .done-title{font:600 30px/1.15 var(--font-head)}
 @media (prefers-reduced-motion:no-preference){
   .flash{animation:pop .25s ease-out}
@@ -196,6 +197,7 @@ details.panel summary{cursor:pointer;font:600 17px var(--font-head)}
 .bw.wait .w{color:var(--muted)}
 .bw.wait .s{color:var(--muted)}
 .cols{display:flex;flex-direction:column;gap:18px;min-width:0}
+.soundsgrid{display:flex;flex-direction:column;gap:18px}
 @media (min-width:900px){
   .wrap{max-width:1120px;gap:22px}
   .top{flex-direction:row;justify-content:space-between;align-items:flex-end;gap:24px}
@@ -425,7 +427,6 @@ details.panel summary{cursor:pointer;font:600 17px var(--font-head)}
 .crit li{display:flex;gap:8px;align-items:flex-start;font-size:14px}
 .crit .ck{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--hair);display:grid;place-items:center;font:700 12px var(--font-head);color:var(--on-btn)}
 .crit li.met .ck{background:var(--good);border-color:var(--good)}
-.tsum{width:100%;box-sizing:border-box;font:13px/1.45 var(--font-adult);padding:10px 12px;border-radius:14px;border:3px solid var(--hair);background:var(--soft);color:var(--ink);resize:vertical}
 .moved{font:600 20px var(--font-head);color:var(--accent);margin-top:4px}
 .gt .auto{font-size:11px;line-height:1;margin-top:1px}
 .gt[aria-pressed="true"] .auto{color:var(--hl)}
@@ -451,6 +452,8 @@ body{overflow-x:clip}
 .landing{position:relative;min-height:min(78vh,680px);display:flex;flex-direction:column;align-items:center;justify-content:center}
 .grown-link{position:absolute;top:0;right:0;display:inline-flex;align-items:center;gap:6px;font-size:15px;color:var(--muted);padding:8px 4px}
 .grown-link .lock{width:14px;height:14px}
+.childrow{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end}.childrow>.field{flex:1 1 200px}
+.land-brand{position:absolute;top:0;left:0;padding:6px 4px;font:600 24px/1 var(--font-head);color:var(--accent);letter-spacing:.01em}
 .land-main{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
 .land-duck{width:min(190px,46vw);display:block}
 .land-duck svg{width:100%;height:auto;display:block;overflow:visible}
@@ -475,6 +478,22 @@ body{overflow-x:clip}
 .alldone{flex-direction:row;align-items:center;gap:16px}
 .big-tick{flex:none;width:52px;height:52px;border-radius:50%;background:var(--good);color:var(--on-btn);display:grid;place-items:center;font:700 28px var(--font-head);border:3px solid var(--edge)}
 @media (max-width:420px){.choice.done{padding-top:40px}.done-badge{top:8px;right:50%;transform:translateX(50%);white-space:nowrap;font-size:11px;padding:2px 8px 2px 3px}.done-badge .tick{width:16px;height:16px;font-size:10px}}
+/* Corner picture: hellebore for pink, fern for green, thistle for blue */
+:root{--fn-leaf:#62B076;--fn-vein:#3D8053;--fn-stem:#4E9A62;--th-floret:#8A6FDB;--th-floret2:#B39CF0;--th-head:#7DB08A;--th-scale:#4E8360;--th-leaf:#7FAE96;--th-vein:#C9E2D3}
+.hellebore .art{display:none}
+.hellebore .art-flower{display:block}
+:root[data-palette="blue"] .hellebore .art-flower,:root[data-palette="green"] .hellebore .art-flower{display:none}
+:root[data-palette="blue"] .hellebore .art-thistle,:root[data-palette="green"] .hellebore .art-fern{display:block}
+.fn-leaf{fill:var(--fn-leaf);stroke:var(--duck-line);stroke-width:1.8;stroke-linejoin:round}
+.fn-vein{fill:none;stroke:var(--fn-vein);stroke-width:1.2;stroke-linecap:round}
+.fn-stem{fill:none;stroke:var(--fn-stem);stroke-width:4.5;stroke-linecap:round}.fn-stem.thin{stroke-width:3}
+.th-floret-o{fill:none;stroke:var(--duck-line);stroke-width:5.5;stroke-linecap:round}
+.th-floret{fill:none;stroke:var(--th-floret);stroke-width:3;stroke-linecap:round}.th-floret.alt{stroke:var(--th-floret2)}
+.th-head{fill:var(--th-head);stroke:var(--duck-line);stroke-width:2;stroke-linejoin:round}
+.th-scale{fill:none;stroke:var(--th-scale);stroke-width:1.3;stroke-linecap:round}
+.th-spine{fill:none;stroke:var(--duck-line);stroke-width:1.4;stroke-linecap:round}
+.th-leaf{fill:var(--th-leaf);stroke:var(--duck-line);stroke-width:1.8;stroke-linejoin:round}
+.th-vein{fill:none;stroke:var(--th-vein);stroke-width:1.4;stroke-linecap:round}
 </style>
 
 <div class="wrap">
@@ -492,7 +511,7 @@ body{overflow-x:clip}
   <p class="note" id="syncnote"></p>
 </div>
 
-<div class="hellebore" aria-hidden="true"><svg viewBox="0 0 170 215">
+<div class="hellebore" aria-hidden="true"><svg class="art art-flower" viewBox="0 0 170 215">
 <defs>
 <g id="hb-petal"><path class="hb-sepal" d="M0 -4 C-28 -10 -34 -50 0 -57 C34 -50 28 -10 0 -4Z"/><path class="hb-vein" d="M0 -14 Q2.5 -32 0 -48"/><circle class="hb-speck" cx="-7" cy="-19" r="1.7"/><circle class="hb-speck" cx="6" cy="-16" r="1.5"/><circle class="hb-speck" cx="-2" cy="-26" r="1.3"/><circle class="hb-speck" cx="9" cy="-25" r="1.2"/><circle class="hb-speck" cx="-11" cy="-28" r="1"/></g>
 <g id="hb-leaflet"><path class="hb-leaf" d="M0 0 C-9 -14 -8 -44 0 -58 C8 -44 9 -14 0 0Z"/></g>
@@ -505,7 +524,9 @@ body{overflow-x:clip}
 <g transform="translate(129.2 148.2) rotate(58)"><path class="hb-leaf" d="M0 0 C-5 -8 -4 -20 0 -26 C4 -20 5 -8 0 0Z"/><path class="hb-lvein" d="M0 -4 L0 -21"/></g>
 <g transform="translate(80 96) rotate(-14)"><use href="#hb-petal" transform="rotate(0)"/><use href="#hb-petal" transform="rotate(72)"/><use href="#hb-petal" transform="rotate(144)"/><use href="#hb-petal" transform="rotate(216)"/><use href="#hb-petal" transform="rotate(288)"/><circle class="hb-nect" r="17"/><circle class="hb-stamen" cx="11.5" cy="0.0" r="2.6"/><circle class="hb-stamen" cx="10.0" cy="5.7" r="2.6"/><circle class="hb-stamen" cx="5.8" cy="10.0" r="2.6"/><circle class="hb-stamen" cx="0.0" cy="11.5" r="2.6"/><circle class="hb-stamen" cx="-5.7" cy="10.0" r="2.6"/><circle class="hb-stamen" cx="-10.0" cy="5.7" r="2.6"/><circle class="hb-stamen" cx="-11.5" cy="0.0" r="2.6"/><circle class="hb-stamen" cx="-10.0" cy="-5.8" r="2.6"/><circle class="hb-stamen" cx="-5.8" cy="-10.0" r="2.6"/><circle class="hb-stamen" cx="-0.0" cy="-11.5" r="2.6"/><circle class="hb-stamen" cx="5.8" cy="-10.0" r="2.6"/><circle class="hb-stamen" cx="10.0" cy="-5.8" r="2.6"/><circle class="hb-carpel" r="6.5"/><circle class="hb-speck" cx="-2" cy="-1.5" r="1.4"/></g>
 </g>
-</svg></div>
+</svg>
+<svg class="art art-fern" viewBox="0 0 170 215"><g class="hb-sway"><path class="hb-stem-o thin" d="M150.0 214.0 Q156.0 146.0 120.0 54.0"/><path class="fn-stem thin" d="M150.0 214.0 Q156.0 146.0 120.0 54.0"/><g transform="translate(150.6 182.9) rotate(-32.5)"><path class="fn-leaf" d="M0 0 C6.5 -5.2 16.9 -3.9 21.7 0 C16.9 3.9 6.5 5.2 0 0Z"/><path class="fn-vein" d="M2.6 0 L17.4 0"/></g><g transform="translate(150.5 180.0) rotate(-152.5)"><path class="fn-leaf" d="M0 0 C6.5 -5.2 16.9 -3.9 21.7 0 C16.9 3.9 6.5 5.2 0 0Z"/><path class="fn-vein" d="M2.6 0 L17.4 0"/></g><g transform="translate(149.9 171.6) rotate(-34.9)"><path class="fn-leaf" d="M0 0 C6.1 -4.9 15.8 -3.6 20.2 0 C15.8 3.6 6.1 4.9 0 0Z"/><path class="fn-vein" d="M2.4 0 L16.2 0"/></g><g transform="translate(149.6 168.6) rotate(-154.9)"><path class="fn-leaf" d="M0 0 C6.1 -4.9 15.8 -3.6 20.2 0 C15.8 3.6 6.1 4.9 0 0Z"/><path class="fn-vein" d="M2.4 0 L16.2 0"/></g><g transform="translate(148.7 160.1) rotate(-37.1)"><path class="fn-leaf" d="M0 0 C5.6 -4.5 14.6 -3.4 18.8 0 C14.6 3.4 5.6 4.5 0 0Z"/><path class="fn-vein" d="M2.3 0 L15.0 0"/></g><g transform="translate(148.3 157.0) rotate(-157.1)"><path class="fn-leaf" d="M0 0 C5.6 -4.5 14.6 -3.4 18.8 0 C14.6 3.4 5.6 4.5 0 0Z"/><path class="fn-vein" d="M2.3 0 L15.0 0"/></g><g transform="translate(146.9 148.3) rotate(-39.2)"><path class="fn-leaf" d="M0 0 C5.2 -4.2 13.5 -3.1 17.3 0 C13.5 3.1 5.2 4.2 0 0Z"/><path class="fn-vein" d="M2.1 0 L13.9 0"/></g><g transform="translate(146.4 145.1) rotate(-159.2)"><path class="fn-leaf" d="M0 0 C5.2 -4.2 13.5 -3.1 17.3 0 C13.5 3.1 5.2 4.2 0 0Z"/><path class="fn-vein" d="M2.1 0 L13.9 0"/></g><g transform="translate(144.8 136.1) rotate(-41.2)"><path class="fn-leaf" d="M0 0 C4.8 -3.8 12.4 -2.9 15.9 0 C12.4 2.9 4.8 3.8 0 0Z"/><path class="fn-vein" d="M1.9 0 L12.7 0"/></g><g transform="translate(144.1 132.9) rotate(-161.2)"><path class="fn-leaf" d="M0 0 C4.8 -3.8 12.4 -2.9 15.9 0 C12.4 2.9 4.8 3.8 0 0Z"/><path class="fn-vein" d="M1.9 0 L12.7 0"/></g><g transform="translate(142.1 123.8) rotate(-43.1)"><path class="fn-leaf" d="M0 0 C4.3 -3.5 11.2 -2.6 14.4 0 C11.2 2.6 4.3 3.5 0 0Z"/><path class="fn-vein" d="M1.7 0 L11.5 0"/></g><g transform="translate(141.3 120.5) rotate(-163.1)"><path class="fn-leaf" d="M0 0 C4.3 -3.5 11.2 -2.6 14.4 0 C11.2 2.6 4.3 3.5 0 0Z"/><path class="fn-vein" d="M1.7 0 L11.5 0"/></g><g transform="translate(138.9 111.1) rotate(-44.9)"><path class="fn-leaf" d="M0 0 C3.9 -3.1 10.1 -2.3 12.9 0 C10.1 2.3 3.9 3.1 0 0Z"/><path class="fn-vein" d="M1.6 0 L10.4 0"/></g><g transform="translate(138.0 107.7) rotate(-164.9)"><path class="fn-leaf" d="M0 0 C3.9 -3.1 10.1 -2.3 12.9 0 C10.1 2.3 3.9 3.1 0 0Z"/><path class="fn-vein" d="M1.6 0 L10.4 0"/></g><g transform="translate(135.3 98.2) rotate(-46.6)"><path class="fn-leaf" d="M0 0 C3.4 -2.8 9.0 -2.1 11.5 0 C9.0 2.1 3.4 2.8 0 0Z"/><path class="fn-vein" d="M1.4 0 L9.2 0"/></g><g transform="translate(134.2 94.7) rotate(-166.6)"><path class="fn-leaf" d="M0 0 C3.4 -2.8 9.0 -2.1 11.5 0 C9.0 2.1 3.4 2.8 0 0Z"/><path class="fn-vein" d="M1.4 0 L9.2 0"/></g><g transform="translate(131.1 84.9) rotate(-48.1)"><path class="fn-leaf" d="M0 0 C3.0 -2.4 7.8 -1.8 10.0 0 C7.8 1.8 3.0 2.4 0 0Z"/><path class="fn-vein" d="M1.2 0 L8.0 0"/></g><g transform="translate(130.0 81.4) rotate(-168.1)"><path class="fn-leaf" d="M0 0 C3.0 -2.4 7.8 -1.8 10.0 0 C7.8 1.8 3.0 2.4 0 0Z"/><path class="fn-vein" d="M1.2 0 L8.0 0"/></g><g transform="translate(126.5 71.4) rotate(-49.6)"><path class="fn-leaf" d="M0 0 C2.6 -2.1 6.7 -1.5 8.6 0 C6.7 1.5 2.6 2.1 0 0Z"/><path class="fn-vein" d="M1.0 0 L6.9 0"/></g><g transform="translate(125.2 67.8) rotate(-169.6)"><path class="fn-leaf" d="M0 0 C2.6 -2.1 6.7 -1.5 8.6 0 C6.7 1.5 2.6 2.1 0 0Z"/><path class="fn-vein" d="M1.0 0 L6.9 0"/></g><g transform="translate(121.4 57.7) rotate(-51.0)"><path class="fn-leaf" d="M0 0 C2.1 -1.7 5.5 -1.3 7.1 0 C5.5 1.3 2.1 1.7 0 0Z"/><path class="fn-vein" d="M0.9 0 L5.7 0"/></g><g transform="translate(121.4 57.7) rotate(-171.0)"><path class="fn-leaf" d="M0 0 C2.1 -1.7 5.5 -1.3 7.1 0 C5.5 1.3 2.1 1.7 0 0Z"/><path class="fn-vein" d="M0.9 0 L5.7 0"/></g><g transform="translate(120.0 54.0) rotate(-111.4)"><path class="fn-leaf" d="M-2 0 C2.2 -2.2 5.8 -1.3 7.2 0 C5.8 1.3 2.2 2.2 -2 0Z"/></g><path class="hb-stem-o thin" d="M150.0 214.0 Q120.0 198.0 40.0 152.0"/><path class="fn-stem thin" d="M150.0 214.0 Q120.0 198.0 40.0 152.0"/><g transform="translate(134.4 205.5) rotate(-91.1)"><path class="fn-leaf" d="M0 0 C6.5 -5.2 16.9 -3.9 21.7 0 C16.9 3.9 6.5 5.2 0 0Z"/><path class="fn-vein" d="M2.6 0 L17.4 0"/></g><g transform="translate(132.7 204.6) rotate(-211.1)"><path class="fn-leaf" d="M0 0 C6.5 -5.2 16.9 -3.9 21.7 0 C16.9 3.9 6.5 5.2 0 0Z"/><path class="fn-vein" d="M2.6 0 L17.4 0"/></g><g transform="translate(127.9 201.9) rotate(-91.0)"><path class="fn-leaf" d="M0 0 C6.1 -4.9 15.8 -3.6 20.2 0 C15.8 3.6 6.1 4.9 0 0Z"/><path class="fn-vein" d="M2.4 0 L16.2 0"/></g><g transform="translate(126.0 200.9) rotate(-211.0)"><path class="fn-leaf" d="M0 0 C6.1 -4.9 15.8 -3.6 20.2 0 C15.8 3.6 6.1 4.9 0 0Z"/><path class="fn-vein" d="M2.4 0 L16.2 0"/></g><g transform="translate(120.8 197.9) rotate(-90.8)"><path class="fn-leaf" d="M0 0 C5.6 -4.5 14.6 -3.4 18.8 0 C14.6 3.4 5.6 4.5 0 0Z"/><path class="fn-vein" d="M2.3 0 L15.0 0"/></g><g transform="translate(118.8 196.8) rotate(-210.8)"><path class="fn-leaf" d="M0 0 C5.6 -4.5 14.6 -3.4 18.8 0 C14.6 3.4 5.6 4.5 0 0Z"/><path class="fn-vein" d="M2.3 0 L15.0 0"/></g><g transform="translate(113.1 193.6) rotate(-90.7)"><path class="fn-leaf" d="M0 0 C5.2 -4.2 13.5 -3.1 17.3 0 C13.5 3.1 5.2 4.2 0 0Z"/><path class="fn-vein" d="M2.1 0 L13.9 0"/></g><g transform="translate(111.0 192.5) rotate(-210.7)"><path class="fn-leaf" d="M0 0 C5.2 -4.2 13.5 -3.1 17.3 0 C13.5 3.1 5.2 4.2 0 0Z"/><path class="fn-vein" d="M2.1 0 L13.9 0"/></g><g transform="translate(104.8 189.0) rotate(-90.6)"><path class="fn-leaf" d="M0 0 C4.8 -3.8 12.4 -2.9 15.9 0 C12.4 2.9 4.8 3.8 0 0Z"/><path class="fn-vein" d="M1.9 0 L12.7 0"/></g><g transform="translate(102.6 187.7) rotate(-210.6)"><path class="fn-leaf" d="M0 0 C4.8 -3.8 12.4 -2.9 15.9 0 C12.4 2.9 4.8 3.8 0 0Z"/><path class="fn-vein" d="M1.9 0 L12.7 0"/></g><g transform="translate(96.0 184.0) rotate(-90.5)"><path class="fn-leaf" d="M0 0 C4.3 -3.5 11.2 -2.6 14.4 0 C11.2 2.6 4.3 3.5 0 0Z"/><path class="fn-vein" d="M1.7 0 L11.5 0"/></g><g transform="translate(93.6 182.6) rotate(-210.5)"><path class="fn-leaf" d="M0 0 C4.3 -3.5 11.2 -2.6 14.4 0 C11.2 2.6 4.3 3.5 0 0Z"/><path class="fn-vein" d="M1.7 0 L11.5 0"/></g><g transform="translate(86.6 178.7) rotate(-90.4)"><path class="fn-leaf" d="M0 0 C3.9 -3.1 10.1 -2.3 12.9 0 C10.1 2.3 3.9 3.1 0 0Z"/><path class="fn-vein" d="M1.6 0 L10.4 0"/></g><g transform="translate(84.0 177.2) rotate(-210.4)"><path class="fn-leaf" d="M0 0 C3.9 -3.1 10.1 -2.3 12.9 0 C10.1 2.3 3.9 3.1 0 0Z"/><path class="fn-vein" d="M1.6 0 L10.4 0"/></g><g transform="translate(76.6 173.0) rotate(-90.3)"><path class="fn-leaf" d="M0 0 C3.4 -2.8 9.0 -2.1 11.5 0 C9.0 2.1 3.4 2.8 0 0Z"/><path class="fn-vein" d="M1.4 0 L9.2 0"/></g><g transform="translate(73.9 171.4) rotate(-210.3)"><path class="fn-leaf" d="M0 0 C3.4 -2.8 9.0 -2.1 11.5 0 C9.0 2.1 3.4 2.8 0 0Z"/><path class="fn-vein" d="M1.4 0 L9.2 0"/></g><g transform="translate(66.0 166.9) rotate(-90.2)"><path class="fn-leaf" d="M0 0 C3.0 -2.4 7.8 -1.8 10.0 0 C7.8 1.8 3.0 2.4 0 0Z"/><path class="fn-vein" d="M1.2 0 L8.0 0"/></g><g transform="translate(63.2 165.3) rotate(-210.2)"><path class="fn-leaf" d="M0 0 C3.0 -2.4 7.8 -1.8 10.0 0 C7.8 1.8 3.0 2.4 0 0Z"/><path class="fn-vein" d="M1.2 0 L8.0 0"/></g><g transform="translate(54.9 160.6) rotate(-90.2)"><path class="fn-leaf" d="M0 0 C2.6 -2.1 6.7 -1.5 8.6 0 C6.7 1.5 2.6 2.1 0 0Z"/><path class="fn-vein" d="M1.0 0 L6.9 0"/></g><g transform="translate(51.9 158.8) rotate(-210.2)"><path class="fn-leaf" d="M0 0 C2.6 -2.1 6.7 -1.5 8.6 0 C6.7 1.5 2.6 2.1 0 0Z"/><path class="fn-vein" d="M1.0 0 L6.9 0"/></g><g transform="translate(43.2 153.8) rotate(-90.1)"><path class="fn-leaf" d="M0 0 C2.1 -1.7 5.5 -1.3 7.1 0 C5.5 1.3 2.1 1.7 0 0Z"/><path class="fn-vein" d="M0.9 0 L5.7 0"/></g><g transform="translate(43.2 153.8) rotate(-210.1)"><path class="fn-leaf" d="M0 0 C2.1 -1.7 5.5 -1.3 7.1 0 C5.5 1.3 2.1 1.7 0 0Z"/><path class="fn-vein" d="M0.9 0 L5.7 0"/></g><g transform="translate(40.0 152.0) rotate(-150.1)"><path class="fn-leaf" d="M-2 0 C2.2 -2.2 5.8 -1.3 7.2 0 C5.8 1.3 2.2 2.2 -2 0Z"/></g><path class="hb-stem-o thin" d="M150.0 214.0 Q118.0 180.0 108.0 134.0"/><path class="fn-stem thin" d="M150.0 214.0 Q118.0 180.0 108.0 134.0"/><path class="hb-stem-o thin" d="M108.0 134.0 L107.3 132.3 L106.3 130.7 L105.1 129.3 L103.8 128.2 L102.2 127.4 L100.6 126.8 L98.9 126.5 L97.2 126.5 L95.6 126.8 L94.0 127.4 L92.6 128.2 L91.4 129.2 L90.4 130.4 L89.6 131.7 L89.1 133.2 L88.8 134.6 L88.8 136.1 L89.0 137.5 L89.5 138.8 L90.1 140.0 L91.0 141.1 L92.0 142.0 L93.1 142.7 L94.3 143.1 L95.5 143.4 L96.8 143.4 L98.0 143.3 L99.1 142.9 L100.1 142.4 L101.0 141.7 L101.8 140.9 L102.3 139.9 L102.7 139.0 L103.0 138.0 L103.0 136.9 L102.9 136.0 L102.6 135.1 L102.2 134.2 L101.6 133.5 L100.9 132.9 L100.2 132.5 L99.5 132.1 L98.7 132.0 L97.9 131.9 L97.1 132.1 L96.4 132.3 L95.8 132.6 L95.3 133.0 L94.8 133.5 L94.5 134.1 L94.3 134.6 L94.2 135.2 L94.2 135.8 L94.3 136.3 L94.5 136.8 L94.7 137.2 L95.1 137.5 L95.4 137.8 L95.8 138.0"/><path class="fn-stem thin" d="M108.0 134.0 L107.3 132.3 L106.3 130.7 L105.1 129.3 L103.8 128.2 L102.2 127.4 L100.6 126.8 L98.9 126.5 L97.2 126.5 L95.6 126.8 L94.0 127.4 L92.6 128.2 L91.4 129.2 L90.4 130.4 L89.6 131.7 L89.1 133.2 L88.8 134.6 L88.8 136.1 L89.0 137.5 L89.5 138.8 L90.1 140.0 L91.0 141.1 L92.0 142.0 L93.1 142.7 L94.3 143.1 L95.5 143.4 L96.8 143.4 L98.0 143.3 L99.1 142.9 L100.1 142.4 L101.0 141.7 L101.8 140.9 L102.3 139.9 L102.7 139.0 L103.0 138.0 L103.0 136.9 L102.9 136.0 L102.6 135.1 L102.2 134.2 L101.6 133.5 L100.9 132.9 L100.2 132.5 L99.5 132.1 L98.7 132.0 L97.9 131.9 L97.1 132.1 L96.4 132.3 L95.8 132.6 L95.3 133.0 L94.8 133.5 L94.5 134.1 L94.3 134.6 L94.2 135.2 L94.2 135.8 L94.3 136.3 L94.5 136.8 L94.7 137.2 L95.1 137.5 L95.4 137.8 L95.8 138.0"/><path class="hb-stem-o thin" d="M150.0 214.0 Q138.0 122.0 66.0 60.0"/><path class="fn-stem thin" d="M150.0 214.0 Q138.0 122.0 66.0 60.0"/><g transform="translate(141.8 175.0) rotate(-48.4)"><path class="fn-leaf" d="M0 0 C8.4 -6.7 21.9 -5.0 28.0 0 C21.9 5.0 8.4 6.7 0 0Z"/><path class="fn-vein" d="M3.4 0 L22.4 0"/></g><g transform="translate(140.8 171.6) rotate(-164.4)"><path class="fn-leaf" d="M0 0 C8.4 -6.7 21.9 -5.0 28.0 0 C21.9 5.0 8.4 6.7 0 0Z"/><path class="fn-vein" d="M3.4 0 L22.4 0"/></g><g transform="translate(138.4 164.3) rotate(-51.2)"><path class="fn-leaf" d="M0 0 C7.9 -6.3 20.6 -4.8 26.5 0 C20.6 4.8 7.9 6.3 0 0Z"/><path class="fn-vein" d="M3.2 0 L21.2 0"/></g><g transform="translate(137.2 160.9) rotate(-167.2)"><path class="fn-leaf" d="M0 0 C7.9 -6.3 20.6 -4.8 26.5 0 C20.6 4.8 7.9 6.3 0 0Z"/><path class="fn-vein" d="M3.2 0 L21.2 0"/></g><g transform="translate(134.5 153.8) rotate(-53.9)"><path class="fn-leaf" d="M0 0 C7.5 -6.0 19.4 -4.5 24.9 0 C19.4 4.5 7.5 6.0 0 0Z"/><path class="fn-vein" d="M3.0 0 L19.9 0"/></g><g transform="translate(133.1 150.6) rotate(-169.9)"><path class="fn-leaf" d="M0 0 C7.5 -6.0 19.4 -4.5 24.9 0 C19.4 4.5 7.5 6.0 0 0Z"/><path class="fn-vein" d="M3.0 0 L19.9 0"/></g><g transform="translate(130.1 143.6) rotate(-56.7)"><path class="fn-leaf" d="M0 0 C7.0 -5.6 18.2 -4.2 23.3 0 C18.2 4.2 7.0 5.6 0 0Z"/><path class="fn-vein" d="M2.8 0 L18.6 0"/></g><g transform="translate(128.6 140.4) rotate(-172.7)"><path class="fn-leaf" d="M0 0 C7.0 -5.6 18.2 -4.2 23.3 0 C18.2 4.2 7.0 5.6 0 0Z"/><path class="fn-vein" d="M2.8 0 L18.6 0"/></g><g transform="translate(125.2 133.6) rotate(-59.4)"><path class="fn-leaf" d="M0 0 C6.5 -5.2 17.0 -3.9 21.7 0 C17.0 3.9 6.5 5.2 0 0Z"/><path class="fn-vein" d="M2.6 0 L17.4 0"/></g><g transform="translate(123.6 130.5) rotate(-175.4)"><path class="fn-leaf" d="M0 0 C6.5 -5.2 17.0 -3.9 21.7 0 C17.0 3.9 6.5 5.2 0 0Z"/><path class="fn-vein" d="M2.6 0 L17.4 0"/></g><g transform="translate(119.8 123.9) rotate(-62.2)"><path class="fn-leaf" d="M0 0 C6.1 -4.8 15.7 -3.6 20.2 0 C15.7 3.6 6.1 4.8 0 0Z"/><path class="fn-vein" d="M2.4 0 L16.1 0"/></g><g transform="translate(118.0 120.9) rotate(-178.2)"><path class="fn-leaf" d="M0 0 C6.1 -4.8 15.7 -3.6 20.2 0 C15.7 3.6 6.1 4.8 0 0Z"/><path class="fn-vein" d="M2.4 0 L16.1 0"/></g><g transform="translate(114.0 114.4) rotate(-65.0)"><path class="fn-leaf" d="M0 0 C5.6 -4.5 14.5 -3.3 18.6 0 C14.5 3.3 5.6 4.5 0 0Z"/><path class="fn-vein" d="M2.2 0 L14.9 0"/></g><g transform="translate(112.1 111.5) rotate(-181.0)"><path class="fn-leaf" d="M0 0 C5.6 -4.5 14.5 -3.3 18.6 0 C14.5 3.3 5.6 4.5 0 0Z"/><path class="fn-vein" d="M2.2 0 L14.9 0"/></g><g transform="translate(107.7 105.1) rotate(-67.7)"><path class="fn-leaf" d="M0 0 C5.1 -4.1 13.3 -3.1 17.0 0 C13.3 3.1 5.1 4.1 0 0Z"/><path class="fn-vein" d="M2.0 0 L13.6 0"/></g><g transform="translate(105.6 102.3) rotate(-183.7)"><path class="fn-leaf" d="M0 0 C5.1 -4.1 13.3 -3.1 17.0 0 C13.3 3.1 5.1 4.1 0 0Z"/><path class="fn-vein" d="M2.0 0 L13.6 0"/></g><g transform="translate(100.9 96.1) rotate(-70.4)"><path class="fn-leaf" d="M0 0 C4.6 -3.7 12.1 -2.8 15.5 0 C12.1 2.8 4.6 3.7 0 0Z"/><path class="fn-vein" d="M1.9 0 L12.4 0"/></g><g transform="translate(98.6 93.3) rotate(-186.4)"><path class="fn-leaf" d="M0 0 C4.6 -3.7 12.1 -2.8 15.5 0 C12.1 2.8 4.6 3.7 0 0Z"/><path class="fn-vein" d="M1.9 0 L12.4 0"/></g><g transform="translate(93.6 87.4) rotate(-73.0)"><path class="fn-leaf" d="M0 0 C4.2 -3.3 10.8 -2.5 13.9 0 C10.8 2.5 4.2 3.3 0 0Z"/><path class="fn-vein" d="M1.7 0 L11.1 0"/></g><g transform="translate(91.2 84.6) rotate(-189.0)"><path class="fn-leaf" d="M0 0 C4.2 -3.3 10.8 -2.5 13.9 0 C10.8 2.5 4.2 3.3 0 0Z"/><path class="fn-vein" d="M1.7 0 L11.1 0"/></g><g transform="translate(85.8 78.8) rotate(-75.6)"><path class="fn-leaf" d="M0 0 C3.7 -3.0 9.6 -2.2 12.3 0 C9.6 2.2 3.7 3.0 0 0Z"/><path class="fn-vein" d="M1.5 0 L9.9 0"/></g><g transform="translate(83.3 76.2) rotate(-191.6)"><path class="fn-leaf" d="M0 0 C3.7 -3.0 9.6 -2.2 12.3 0 C9.6 2.2 3.7 3.0 0 0Z"/><path class="fn-vein" d="M1.5 0 L9.9 0"/></g><g transform="translate(77.6 70.5) rotate(-78.1)"><path class="fn-leaf" d="M0 0 C3.2 -2.6 8.4 -1.9 10.7 0 C8.4 1.9 3.2 2.6 0 0Z"/><path class="fn-vein" d="M1.3 0 L8.6 0"/></g><g transform="translate(74.9 68.0) rotate(-194.1)"><path class="fn-leaf" d="M0 0 C3.2 -2.6 8.4 -1.9 10.7 0 C8.4 1.9 3.2 2.6 0 0Z"/><path class="fn-vein" d="M1.3 0 L8.6 0"/></g><g transform="translate(68.9 62.5) rotate(-80.5)"><path class="fn-leaf" d="M0 0 C2.8 -2.2 7.2 -1.7 9.2 0 C7.2 1.7 2.8 2.2 0 0Z"/><path class="fn-vein" d="M1.1 0 L7.3 0"/></g><g transform="translate(68.9 62.5) rotate(-196.5)"><path class="fn-leaf" d="M0 0 C2.8 -2.2 7.2 -1.7 9.2 0 C7.2 1.7 2.8 2.2 0 0Z"/><path class="fn-vein" d="M1.1 0 L7.3 0"/></g><g transform="translate(66.0 60.0) rotate(-139.3)"><path class="fn-leaf" d="M-2 0 C2.8 -2.8 7.4 -1.7 9.3 0 C7.4 1.7 2.8 2.8 -2 0Z"/></g></g></svg>
+<svg class="art art-thistle" viewBox="0 0 170 215"><g class="hb-sway"><g transform="translate(152.0 204.0) rotate(-168.0) scale(0.9 0.9)"><path class="th-leaf" d="M0 0 Q6.0 -14.2 24.0 -15.0 Q24.4 -7.3 27.0 -6.0 Q32.2 -19.0 48.0 -20.0 Q48.5 -9.8 51.0 -8.0 Q55.8 -16.1 70.0 -17.0 Q70.5 -7.7 73.0 -6.0 Q76.8 -9.5 88.0 -10.0 Q96.0 -5.0 100.0 0.0 Q88.1 5.4 86.0 9.0 Q73.2 8.5 69.0 5.0 Q66.5 11.6 66.0 16.0 Q51.8 15.2 47.0 7.0 Q44.5 13.6 44.0 18.0 Q28.2 17.1 23.0 5.0 Q20.4 9.8 20.0 13.0 Q5.0 12.3 0.0 0.0Z" style="stroke-width:2.0"/><path class="th-vein" d="M4 0 Q50 0.0 92 0.0" style="stroke-width:1.6"/><path class="th-spine" d="M24.0 -15.0 l5.0 -4.0M48.0 -20.0 l5.0 -4.0M70.0 -17.0 l5.0 -4.0M88.0 -10.0 l5.0 -4.0M20.0 13.0 l5.0 4.0M44.0 18.0 l5.0 4.0M66.0 16.0 l5.0 4.0M86.0 9.0 l5.0 4.0" style="stroke-width:1.6"/></g><g transform="translate(150.0 206.0) rotate(-134.0) scale(0.7 -0.7)"><path class="th-leaf" d="M0 0 Q6.0 -14.2 24.0 -15.0 Q24.4 -7.3 27.0 -6.0 Q32.2 -19.0 48.0 -20.0 Q48.5 -9.8 51.0 -8.0 Q55.8 -16.1 70.0 -17.0 Q70.5 -7.7 73.0 -6.0 Q76.8 -9.5 88.0 -10.0 Q96.0 -5.0 100.0 0.0 Q88.1 5.4 86.0 9.0 Q73.2 8.5 69.0 5.0 Q66.5 11.6 66.0 16.0 Q51.8 15.2 47.0 7.0 Q44.5 13.6 44.0 18.0 Q28.2 17.1 23.0 5.0 Q20.4 9.8 20.0 13.0 Q5.0 12.3 0.0 0.0Z" style="stroke-width:2.4"/><path class="th-vein" d="M4 0 Q50 0.0 92 0.0" style="stroke-width:1.9"/><path class="th-spine" d="M24.0 -15.0 l5.0 -4.0M48.0 -20.0 l5.0 -4.0M70.0 -17.0 l5.0 -4.0M88.0 -10.0 l5.0 -4.0M20.0 13.0 l5.0 4.0M44.0 18.0 l5.0 4.0M66.0 16.0 l5.0 4.0M86.0 9.0 l5.0 4.0" style="stroke-width:1.9"/></g><path class="hb-stem-o" d="M150.0 214.0 Q130.0 190.0 84.0 138.0"/><path class="hb-stem" d="M150.0 214.0 Q130.0 190.0 84.0 138.0"/><path class="hb-stem-o" d="M150.0 214.0 Q158.0 140.0 132.0 70.0"/><path class="hb-stem" d="M150.0 214.0 Q158.0 140.0 132.0 70.0"/><path class="hb-stem-o thin" d="M150.0 214.0 Q148.0 170.0 112.0 106.0"/><path class="hb-stem thin" d="M150.0 214.0 Q148.0 170.0 112.0 106.0"/><g transform="translate(84.0 138.0) rotate(-28.0) scale(0.95)"><path class="th-floret-o" d="M0 -10 L-24.3 -16.0"/><path class="th-floret-o" d="M0 -10 L-26.3 -22.2"/><path class="th-floret-o" d="M0 -10 L-20.3 -24.6"/><path class="th-floret-o" d="M0 -10 L-19.9 -31.1"/><path class="th-floret-o" d="M0 -10 L-13.5 -31.1"/><path class="th-floret-o" d="M0 -10 L-10.7 -36.9"/><path class="th-floret-o" d="M0 -10 L-4.7 -34.6"/><path class="th-floret-o" d="M0 -10 L0.0 -39.0"/><path class="th-floret-o" d="M0 -10 L4.7 -34.6"/><path class="th-floret-o" d="M0 -10 L10.7 -36.9"/><path class="th-floret-o" d="M0 -10 L13.5 -31.1"/><path class="th-floret-o" d="M0 -10 L19.9 -31.1"/><path class="th-floret-o" d="M0 -10 L20.3 -24.6"/><path class="th-floret-o" d="M0 -10 L26.3 -22.2"/><path class="th-floret-o" d="M0 -10 L24.3 -16.0"/><path class="th-floret" d="M0 -10 L-24.3 -16.0"/><path class="th-floret alt" d="M0 -10 L-26.3 -22.2"/><path class="th-floret" d="M0 -10 L-20.3 -24.6"/><path class="th-floret" d="M0 -10 L-19.9 -31.1"/><path class="th-floret alt" d="M0 -10 L-13.5 -31.1"/><path class="th-floret" d="M0 -10 L-10.7 -36.9"/><path class="th-floret" d="M0 -10 L-4.7 -34.6"/><path class="th-floret alt" d="M0 -10 L0.0 -39.0"/><path class="th-floret" d="M0 -10 L4.7 -34.6"/><path class="th-floret" d="M0 -10 L10.7 -36.9"/><path class="th-floret alt" d="M0 -10 L13.5 -31.1"/><path class="th-floret" d="M0 -10 L19.9 -31.1"/><path class="th-floret" d="M0 -10 L20.3 -24.6"/><path class="th-floret alt" d="M0 -10 L26.3 -22.2"/><path class="th-floret" d="M0 -10 L24.3 -16.0"/><path class="th-head" d="M-13 -8 C-16 4 -10 16 0 17 C10 16 16 4 13 -8 C6 -12 -6 -12 -13 -8Z"/><path class="th-scale" d="M-11 -2 Q-6 2 -1 -2 Q4 2 9 -2 M-12 6 Q-7 10 -2 6 Q3 10 8 6 Q11 8 12 6 M-8 13 Q-3 16 2 13 Q6 15 8 12"/><path class="th-spine" d="M-12 -2 l-7 -3 M12 -2 l7 -3 M-11 8 l-7 1 M11 8 l7 1 M-6 15 l-4 5 M6 15 l4 5"/></g><g transform="translate(132.0 70.0) rotate(-8.0) scale(1.1)"><path class="th-floret-o" d="M0 -10 L-24.3 -16.0"/><path class="th-floret-o" d="M0 -10 L-26.3 -22.2"/><path class="th-floret-o" d="M0 -10 L-20.3 -24.6"/><path class="th-floret-o" d="M0 -10 L-19.9 -31.1"/><path class="th-floret-o" d="M0 -10 L-13.5 -31.1"/><path class="th-floret-o" d="M0 -10 L-10.7 -36.9"/><path class="th-floret-o" d="M0 -10 L-4.7 -34.6"/><path class="th-floret-o" d="M0 -10 L0.0 -39.0"/><path class="th-floret-o" d="M0 -10 L4.7 -34.6"/><path class="th-floret-o" d="M0 -10 L10.7 -36.9"/><path class="th-floret-o" d="M0 -10 L13.5 -31.1"/><path class="th-floret-o" d="M0 -10 L19.9 -31.1"/><path class="th-floret-o" d="M0 -10 L20.3 -24.6"/><path class="th-floret-o" d="M0 -10 L26.3 -22.2"/><path class="th-floret-o" d="M0 -10 L24.3 -16.0"/><path class="th-floret" d="M0 -10 L-24.3 -16.0"/><path class="th-floret alt" d="M0 -10 L-26.3 -22.2"/><path class="th-floret" d="M0 -10 L-20.3 -24.6"/><path class="th-floret" d="M0 -10 L-19.9 -31.1"/><path class="th-floret alt" d="M0 -10 L-13.5 -31.1"/><path class="th-floret" d="M0 -10 L-10.7 -36.9"/><path class="th-floret" d="M0 -10 L-4.7 -34.6"/><path class="th-floret alt" d="M0 -10 L0.0 -39.0"/><path class="th-floret" d="M0 -10 L4.7 -34.6"/><path class="th-floret" d="M0 -10 L10.7 -36.9"/><path class="th-floret alt" d="M0 -10 L13.5 -31.1"/><path class="th-floret" d="M0 -10 L19.9 -31.1"/><path class="th-floret" d="M0 -10 L20.3 -24.6"/><path class="th-floret alt" d="M0 -10 L26.3 -22.2"/><path class="th-floret" d="M0 -10 L24.3 -16.0"/><path class="th-head" d="M-13 -8 C-16 4 -10 16 0 17 C10 16 16 4 13 -8 C6 -12 -6 -12 -13 -8Z"/><path class="th-scale" d="M-11 -2 Q-6 2 -1 -2 Q4 2 9 -2 M-12 6 Q-7 10 -2 6 Q3 10 8 6 Q11 8 12 6 M-8 13 Q-3 16 2 13 Q6 15 8 12"/><path class="th-spine" d="M-12 -2 l-7 -3 M12 -2 l7 -3 M-11 8 l-7 1 M11 8 l7 1 M-6 15 l-4 5 M6 15 l4 5"/></g><g transform="translate(112.0 106.0) rotate(-18.0) scale(0.7)"><path class="th-floret-o" d="M-4 -12 L0 -20 M0 -12 L0 -21 M4 -12 L0 -20"/><path class="th-floret" d="M-4 -12 L0 -20 M0 -12 L0 -21 M4 -12 L0 -20"/><path class="th-head" d="M-13 -8 C-16 4 -10 16 0 17 C10 16 16 4 13 -8 C6 -12 -6 -12 -13 -8Z"/><path class="th-scale" d="M-11 -2 Q-6 2 -1 -2 Q4 2 9 -2 M-12 6 Q-7 10 -2 6 Q3 10 8 6 Q11 8 12 6 M-8 13 Q-3 16 2 13 Q6 15 8 12"/><path class="th-spine" d="M-12 -2 l-7 -3 M12 -2 l7 -3 M-11 8 l-7 1 M11 8 l7 1 M-6 15 l-4 5 M6 15 l4 5"/></g></g></svg></div>
 
 <script>
 /* ================= Sounds: Reception follows her book sets, then Little Wandle's Phase 3 and Year 1 Phase 5 ================= */
@@ -576,7 +597,7 @@ function analyseParts(gs){
   let cluster=false;for(let i=0;i<gs.length-1;i++)if(isCons(gs[i])&&isCons(gs[i+1]))cluster=true;
   const ready=!unknown.length&&!missing.length&&(!cluster||S.clusters);
   let why="Ready";
-  if(unknown.length)why="Uses a spelling not in her sets";
+  if(unknown.length)why="Uses a spelling not in ⟦her⟧ sets";
   else if(missing.length)why="Waiting for "+missing.map(m=>gOf(m)+(EX[m]&&m.includes(":")?` (${EX[m]})`:"")).join(", ");
   else if(cluster&&!S.clusters)why="Two consonants together";
   return {gs,ready,why,cluster};
@@ -608,7 +629,6 @@ const BANK_MAP={};
 BANK_R.forEach(w=>{BANK_MAP[w]=segment(w,MULTI_R)});
 BANK_Y1.forEach(p=>{BANK_MAP[wordFromParts(p)]=p});
 const BANK=Object.keys(BANK_MAP);
-const DEFAULT_BOOK={title:"Oxford Reading Tree phonics, book 2",words:"it pan dip man sad mint sit pit tip net in tin ant mat map dog and damp".split(" ")};
 
 /* Alien words: made-up words from taught sounds, like the Year 1 phonics check */
 const BLOCK=new Set("tit tits fag cum fuk fuc fuck dik dic dick cok coc kok cock nob wog nig pis piss sod shit shat shag wank jizz muff bum fux poo git cun gay sex twat prat turd fart arse poop peen".split(" "));
@@ -638,14 +658,14 @@ const ALIEN_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy
 
 /* ================= Tricky words: Phase 2 to Phase 5 ================= */
 const GROUPS=[
-  {term:"Reception autumn",hl:"s",title:"s says z",note:"She knows s as in sat. In these words the s makes a z sound.",
+  {term:"Reception autumn",hl:"s",title:"s says z",note:"⟦She⟧ knows s as in sat. In these words the s makes a z sound.",
    words:[["is",[["i"],["s","says z"]]],["as",[["a"],["s","says z"]]],["has",[["h"],["a"],["s","says z"]]],["his",[["h"],["i"],["s","says z"]]]]},
   {term:"Reception autumn",hl:"I",title:"I says igh",note:"On its own, I says its name (igh), not the i in pin.",words:[["I",[["I","says igh"]]]]},
   {term:"Reception autumn",hl:"the",title:"th and a short e",note:"th is a two-letter sound, and the e makes a short uh sound.",words:[["the",[["th","th"],["e","says uh"]]]]},
   {term:"Reception autumn",hl:"u",title:"u says oo",note:"Here u makes the oo in book, not the u in cup. Depending on your accent, school may not teach these four as tricky.",
    words:[["put",[["p"],["u","says oo"],["t"]]],["pull",[["p"],["u","says oo"],["ll"]]],["full",[["f"],["u","says oo"],["ll"]]],["push",[["p"],["u","says oo"],["sh"]]]]},
   {term:"Reception autumn",hl:"nd",title:"n and d together",note:"Every sound is regular, but two consonants sit side by side and need blending.",words:[["and",[["a"],["nd","blend n-d","blend"]]]]},
-  {term:"Reception autumn",hl:"er",title:"er",note:"er is a two-letter sound she has not met yet.",words:[["her",[["h"],["er","er"]]]]},
+  {term:"Reception autumn",hl:"er",title:"er",note:"er is a two-letter sound ⟦she⟧ has not met yet.",words:[["her",[["h"],["er","er"]]]]},
   {term:"Reception autumn",hl:"o",title:"o says oa",note:"o makes oa as in boat, rather than the o in dog.",words:[["go",[["g"],["o","says oa"]]],["no",[["n"],["o","says oa"]]]]},
   {term:"Reception autumn",hl:"o",title:"o says oo",note:"o makes oo as in food, or a short uh when spoken quickly.",words:[["to",[["t"],["o","says oo"]]],["into",[["i"],["n"],["t"],["o","says oo"]]]]},
   {term:"Reception autumn",hl:"e",title:"e says ee",note:"e makes ee, rather than the e in egg.",
@@ -677,15 +697,15 @@ const INTERVAL={1:1,2:2,3:4,4:7,5:14};
 const LS_KEY="tricky-words-v1";
 function freshSounds(){
   const taught={};["s","a","t","p","i","n","m","d"].forEach(g=>taught[g]=true);
-  return {taught,auto:{},batch:[],clusters:true,book:{title:DEFAULT_BOOK.title,words:DEFAULT_BOOK.words.slice()},cards:{},gcards:{}};
+  return {taught,auto:{},batch:[],clusters:true,book:{title:"",words:[]},cards:{},gcards:{}};
 }
-function freshState(){return {v:1,name:"",year:"R",term:"auto",palette:"pink",pace:{reading:"own",maths:"own"},trickyAuto:{},taught:{is:true},cards:{},days:[],log:[],reads:[],updated:0,sounds:freshSounds(),maths:freshMaths()}}
+function freshState(){return {v:1,name:"",child:"girl",year:"R",term:"auto",palette:"pink",pace:{reading:"own",maths:"own"},trickyAuto:{},taught:{is:true},cards:{},days:[],log:[],reads:[],updated:0,sounds:freshSounds(),maths:freshMaths()}}
 function migrate(s){
   if(!s.sounds)s.sounds=freshSounds();
   const S=s.sounds;S.taught=S.taught||{};S.auto=S.auto||{};S.batch=S.batch||[];S.cards=S.cards||{};S.gcards=S.gcards||{};
-  if(!S.book)S.book={title:DEFAULT_BOOK.title,words:DEFAULT_BOOK.words.slice()};
+  if(!S.book)S.book={title:"",words:[]};S.book.words=S.book.words||[];
   if(S.clusters===undefined)S.clusters=true;
-  s.year=s.year||"R";s.pace=Object.assign({reading:"own",maths:"own"},s.pace||{});s.trickyAuto=s.trickyAuto||{};s.term=s.term||"auto";s.palette=s.palette||"pink";s.cards=s.cards||{};s.days=s.days||[];s.log=s.log||[];s.reads=s.reads||[];if(!s.maths)s.maths=freshMaths();s.maths.cards=s.maths.cards||{};if(s.maths.stage==null)s.maths.stage=-1;s.maths.settings=Object.assign(freshMaths().settings,s.maths.settings||{});s.maths.stats=s.maths.stats||{};s.taught=s.taught||{};
+  s.year=s.year||"R";s.pace=Object.assign({reading:"own",maths:"own"},s.pace||{});s.trickyAuto=s.trickyAuto||{};s.term=s.term||"auto";s.palette=s.palette||"pink";s.child=s.child==="boy"?"boy":"girl";s.cards=s.cards||{};s.days=s.days||[];s.log=s.log||[];s.reads=s.reads||[];if(!s.maths)s.maths=freshMaths();s.maths.cards=s.maths.cards||{};if(s.maths.stage==null)s.maths.stage=-1;s.maths.settings=Object.assign(freshMaths().settings,s.maths.settings||{});s.maths.stats=s.maths.stats||{};s.taught=s.taught||{};
   return s;
 }
 let state=freshState();
@@ -830,7 +850,7 @@ function readingCriteria(){
   const items=[
     {met:B.length>0&&nb===B.length,label:"Newest sounds read straight away after a gap of 2 days or more",detail:`${nb} of ${B.length}: ${B.map(gOf).join(" ")}`},
     {met:oldShare>=PACE_SHARE,label:"90% of earlier sounds still fluent after 4 days or more (a slipped sound counts against this)",detail:older.length?`${Math.round(oldShare*100)}% of ${older.length}`:"none yet"},
-    {met:words>=3,label:"3 words with the newest sounds read on her own after a gap",detail:`${Math.min(words,3)} of 3`}
+    {met:words>=3,label:"3 words with the newest sounds read on ⟦her⟧ own after a gap",detail:`${Math.min(words,3)} of 3`}
   ];
   return {items,ready:items.every(i=>i.met)&&next.length>0&&S.lastUnlock!==today(),next};
 }
@@ -843,7 +863,7 @@ function trickyCriteria(){
   const fluent=share(taught,w=>c[w]&&c[w].box>=3),slipped=taught.filter(w=>c[w]&&c[w].last==="reset");
   const next=ORDER.filter(w=>!state.taught[w]&&trickyTermReady(WORDS[w].term)).slice(0,2);
   const items=[
-    {met:fluent>=PACE_SHARE,label:"90% of her tricky words read straight away after a gap",detail:`${Math.round(fluent*100)}% of ${taught.length}`}
+    {met:fluent>=PACE_SHARE,label:"90% of ⟦her⟧ tricky words read straight away after a gap",detail:`${Math.round(fluent*100)}% of ${taught.length}`}
   ];
   return {items,ready:taught.length>0&&items.every(i=>i.met)&&next.length>0&&state.trickyLast!==today(),next};
 }
@@ -881,31 +901,11 @@ function checkPace(){
   return out;
 }
 const stageName=k=>{const [y,t]=k.split("-");return `${y==="Y1"?"Year 1":"Reception"} ${t}`};
-function teacherSummary(){
-  const S=state.sounds,gc=S.gcards,T=ALL_G.filter(g=>S.taught[g]);
-  const sec=T.filter(g=>gc[g]&&gc[g].box>=4),prac=T.filter(g=>!sec.includes(g));
-  const tt=taughtTricky(),tsec=tt.filter(w=>state.cards[w]&&state.cards[w].box>=4);
-  const wordsOwn=Object.values(S.cards).filter(c=>c.box>=3).length;
-  syncPlan();const mc=MS().cards||{},mkey=MS().settings.planKey;
-  const msec=planItemKeys(mkey).filter(k=>mc[k]&&mc[k].box>=4),mprac=planItemKeys(mkey).filter(k=>!msec.includes(k));
-  const name=(state.name||"").trim()||"My daughter";
-  const fmt=a=>a.length?a.map(x=>gOf(x)+(x.includes(":")&&EX[x]?` (as in ${EX[x]})`:"")).join(", "):"none yet";
-  return [`${name}: home practice record, ${niceDate(today())}`,"",
-    "Reading",
-    `Sounds secure (read straight away, still fluent after a gap of 4+ days): ${fmt(sec)}`,
-    `Sounds still practising: ${fmt(prac)}`,
-    `Tricky words read on sight after a gap: ${tsec.length?tsec.join(", "):"none yet"}`,
-    `Decodable words read on her own after a gap: ${wordsOwn}`,
-    "",`Maths (working at: ${stageName(mkey)})`,
-    `Secure: ${msec.length?msec.map(keyLabel).join(", "):"none yet"}`,
-    `Practising: ${mprac.length?mprac.map(keyLabel).join(", "):"none"}`,
-    "","Recorded with a home practice app that follows the school's phonics sequence and moves on only when she is fluent after a gap."].join("\n");
-}
 function criteriaList(c){
   return el("ul",{class:"crit"},c.items.map(i=>el("li",{class:i.met?"met":""},el("span",{class:"ck","aria-hidden":"true",text:i.met?"✓":""}),el("span",{},i.label,el("span",{class:"note",text:` · ${i.detail}`})))));
 }
 function pacePanel(){
-  const p=el("section",{class:"panel"},el("h2",{text:"Her pace"}));
+  const p=el("section",{class:"panel"},el("h2",{text:"⟦Her⟧ pace"}));
   if(ownPace("reading")){
     const rc=readingCriteria(),tc=trickyCriteria();
     p.append(el("h3",{text:rc.next.length?`Next sounds: ${rc.next.map(gOf).join(" ")}`:"Every sound is unlocked"}),criteriaList(rc),
@@ -914,32 +914,27 @@ function pacePanel(){
   if(ownPace("maths")){
     const mc=mathsCriteria();
     p.append(el("h3",{text:mc.next?`Maths moves on to ${stageName(mc.next)} when:`:"Maths is at the last stage"}),criteriaList(mc));
-  }else p.append(el("p",{class:"muted",text:"Maths follows her school year and term."}));
+  }else p.append(el("p",{class:"muted",text:"Maths follows ⟦her⟧ school year and term."}));
   p.append(el("p",{class:"note",text:"The school's sequence is the floor, never the ceiling. Change this on the Settings page."}));
   return p;
-}
-function teacherPanel(){
-  const txt=teacherSummary();
-  const ta=el("textarea",{id:"teacher-summary",class:"tsum",readonly:"",rows:"9"});ta.value=txt;
-  const msg=el("span",{class:"note","aria-live":"polite"});
-  const copy=el("button",{class:"btn small",on:{click:()=>{
-    try{navigator.clipboard.writeText(txt).then(()=>{msg.textContent="Copied."},()=>{ta.select();msg.textContent="Selected. Copy it from here."})}catch(e){ta.select();msg.textContent="Selected. Copy it from here."}}}},"Copy for her teacher");
-  return el("section",{class:"panel"},el("h2",{text:"For her teacher"}),
-    el("p",{class:"note",text:"A short, factual record to paste into an email or the reading record, if she is ahead of her books."}),ta,el("div",{class:"row"},copy,msg));
 }
 
 /* ================= Rendering ================= */
 const view=document.getElementById("view");
+/* Pronouns: prose carries tokens like ⟦she⟧, resolved from the boy/girl setting when the text is drawn. Word data is never tokenised. */
+const PRON={girl:{"she":"she","She":"She","her":"her","Her":"Her","her-o":"her","herself":"herself","daughter":"daughter"},
+  boy:{"she":"he","She":"He","her":"his","Her":"His","her-o":"him","herself":"himself","daughter":"son"}};
+const G=v=>typeof v==="string"&&v.includes("⟦")?v.replace(/⟦([^⟧]+)⟧/g,(m,k)=>(PRON[state.child]||PRON.girl)[k]??k):v;
 function el(tag,attrs={},...kids){
   const e=document.createElement(tag);
   for(const [k,v] of Object.entries(attrs)){
     if(k==="class")e.className=v;else if(k==="on")for(const [ev,fn] of Object.entries(v))e.addEventListener(ev,fn);
-    else if(k==="text")e.textContent=v;else if(k==="html")e.innerHTML=v;else e.setAttribute(k,v);
+    else if(k==="text")e.textContent=G(v);else if(k==="html")e.innerHTML=G(v);else e.setAttribute(k,G(v));
   }
-  kids.flat().forEach(k=>k!=null&&k!==false&&e.append(k));
+  kids.flat().forEach(k=>k!=null&&k!==false&&e.append(G(k)));
   return e;
 }
-const readerName=()=>(state.name||"").trim()||"her";
+const readerName=()=>(state.name||"").trim()||"⟦her-o⟧";
 /* ----- School year and term ----- */
 function curTerm(){if(state.term&&state.term!=="auto")return state.term;const m=new Date().getMonth()+1;return m>=9?"autumn":m<=3?"spring":"summer"}
 const yearName=()=>state.year==="Y1"?"Year 1":"Reception";
@@ -1108,6 +1103,7 @@ function ducksPanel(){
 function landingView(){
   const name=(state.name||"").trim(),s=streak();
   return el("section",{class:"landing"},
+    el("span",{class:"land-brand",text:"Waddle"}),
     el("button",{class:"linkbtn grown-link",type:"button",on:{click:()=>{tab="grown";render()}},html:'<svg class="lock" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="7" width="11" height="7.5" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Grown-ups'}),
     el("div",{class:"land-main"},
       el("span",{class:"land-duck",html:DUCK_SVG(true)}),
@@ -1121,9 +1117,9 @@ function startView(){
     const ng=sp.queue.filter(q=>q.kind==="g").length,nw=sp.queue.filter(q=>q.kind==="w").length;
     const soundsTile=sp.queue.length
       ?choiceTile({icon:"sounds",title:"Sounds and words",note:listBits([ng&&`${ng} sounds`,nw&&`${nw} words`])+" · 4 min",onClick:()=>begin("sounds",sp.queue),done:doneToday("sounds")})
-      :choiceTile({icon:"sounds",title:"Sounds and words",note:"Tick her sounds in Grown-ups first",disabled:true});
+      :choiceTile({icon:"sounds",title:"Sounds and words",note:"Tick ⟦her⟧ sounds in Grown-ups first",disabled:true});
     const trickyTile=!tt.length
-      ?choiceTile({icon:"tricky",title:"Tricky words",note:"Tick her tricky words in Grown-ups first",disabled:true})
+      ?choiceTile({icon:"tricky",title:"Tricky words",note:"Tick ⟦her⟧ tricky words in Grown-ups first",disabled:true})
       :tp.queue.length
         ?choiceTile({icon:"tricky",title:"Tricky words",note:`${tp.queue.length} word${tp.queue.length>1?"s":""} · 2 min`,onClick:()=>begin("tricky",tp.queue),done:doneToday("tricky")})
         :choiceTile({icon:"tricky",title:"Tricky words",note:"All caught up · extra practice",onClick:()=>begin("tricky",shuffle(tt).slice(0,5).map(v=>({kind:"t",v}))),done:true});
@@ -1150,17 +1146,17 @@ const pct=(a,b)=>b?Math.round(100*a/b):null;
 const sum=(a,k)=>a.reduce((x,e)=>x+(e[k]||0),0);
 function tile(value,label,subText){return el("div",{class:"stat"},el("b",{text:value}),el("span",{text:label}),subText?el("span",{class:"sub",text:subText}):null)}
 const SVGNS="http://www.w3.org/2000/svg";
-function svg(tag,attrs={},...kids){const e=document.createElementNS(SVGNS,tag);for(const [k,v] of Object.entries(attrs))k==="text"?e.textContent=v:e.setAttribute(k,v);kids.flat().forEach(k=>k&&e.append(k));return e}
+function svg(tag,attrs={},...kids){const e=document.createElementNS(SVGNS,tag);for(const [k,v] of Object.entries(attrs))k==="text"?e.textContent=G(v):e.setAttribute(k,G(v));kids.flat().forEach(k=>k&&e.append(k));return e}
 
 function weeklyChart(data){
   const W=560,H=180,L=40,R=8,T=20,B=30,ph=H-T-B,cw=(W-L-R)/data.length,bw=Math.min(40,cw*.56);
   const y=v=>T+ph-ph*v/100;
-  const c=svg("svg",{class:"chart",viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Share of cards read on her own, by week"});
+  const c=svg("svg",{class:"chart",viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Share of cards read on ⟦her⟧ own, by week"});
   [0,50,100].forEach(v=>{c.append(svg("line",{class:v?"grid":"base",x1:L,x2:W-R,y1:y(v),y2:y(v)}),svg("text",{x:L-8,y:y(v)+4,"text-anchor":"end",text:v+"%"}))});
   const lastIdx=data.map(d=>d.p!=null).lastIndexOf(true);
   data.forEach((d,i)=>{
     const cx=L+cw*i+cw/2,g=svg("g",{class:"col"});
-    g.append(svg("title",{text:d.p==null?`Week of ${shortDate(d.ws)}: no sessions`:`Week of ${shortDate(d.ws)}: ${d.up} of ${d.n} on her own (${d.p}%)`}));
+    g.append(svg("title",{text:d.p==null?`Week of ${shortDate(d.ws)}: no sessions`:`Week of ${shortDate(d.ws)}: ${d.up} of ${d.n} on ⟦her⟧ own (${d.p}%)`}));
     g.append(svg("rect",{class:"hit",x:L+cw*i+2,y:T,width:cw-4,height:ph,rx:6}));
     if(d.p!=null&&d.p>0){
       const h=ph*d.p/100,x=cx-bw/2,top=T+ph-h,r=Math.min(4,h);
@@ -1185,25 +1181,25 @@ function progressView(){
 
   wrap.append(el("div",{class:"summary four span-all"},
     tile(`${pDays}/14`,"Days practised","last two weeks"),
-    tile(`${rDays}/14`,"Days with her school book","last two weeks"),
-    tile(sum(thisWeek,"n")?`${pct(sum(thisWeek,"up"),sum(thisWeek,"n"))}%`:"–","Cards on her own","this week"),
-    tile(sum(al,"an")?`${sum(al,"au")}/${sum(al,"an")}`:"–","Alien words decoded","on her own, recent")));
+    tile(`${rDays}/14`,"Days with ⟦her⟧ school book","last two weeks"),
+    tile(sum(thisWeek,"n")?`${pct(sum(thisWeek,"up"),sum(thisWeek,"n"))}%`:"–","Cards on ⟦her⟧ own","this week"),
+    tile(sum(al,"an")?`${sum(al,"au")}/${sum(al,"an")}`:"–","Alien words decoded","on ⟦her⟧ own, recent")));
 
   // Weekly chart
   const ws0=weekStart(t),weeks=[];for(let i=7;i>=0;i--)weeks.push(addDays(ws0,-7*i));
   const data=weeks.map(ws=>{const es=scored.filter(e=>weekStart(e.d)===ws),n=sum(es,"n"),up=sum(es,"up");return {ws,n,up,p:pct(up,n)}});
   const chartPanel=el("section",{class:"panel"},
-    el("div",{class:"panel-head"},el("h2",{text:"Reading on her own, week by week"})),
-    el("p",{class:"note",text:"Share of sound and word cards she managed without help. A dip in the week new sounds arrive is normal and healthy."}));
+    el("div",{class:"panel-head"},el("h2",{text:"Reading on ⟦her⟧ own, week by week"})),
+    el("p",{class:"note",text:"Share of sound and word cards ⟦she⟧ managed without help. A dip in the week new sounds arrive is normal and healthy."}));
   if(data.some(d=>d.p!=null))chartPanel.append(el("div",{style:"overflow-x:auto"},weeklyChart(data)));
-  else chartPanel.append(el("p",{class:"empty",text:"This fills in as she finishes sessions. Each bar will show one week."}));
+  else chartPanel.append(el("p",{class:"empty",text:"This fills in as ⟦she⟧ finishes sessions. Each bar will show one week."}));
   wrap.append(left,right);left.append(chartPanel);
 
   // Last 14 days and the school book
   const readToday=reads.has(t);
   const strip=el("div",{class:"strip"});
   last14.forEach(d=>{const [y,m,dd]=d.split("-").map(Number);
-    strip.append(el("div",{class:"sday"+(d===t?" today":""),title:`${niceDate(d)}: ${prac.has(d)?"practised":"no practice"}; ${reads.has(d)?"read her school book":"no book reading ticked"}`},
+    strip.append(el("div",{class:"sday"+(d===t?" today":""),title:`${niceDate(d)}: ${prac.has(d)?"practised":"no practice"}; ${reads.has(d)?"read ⟦her⟧ school book":"no book reading ticked"}`},
       el("span",{class:"mk p"+(prac.has(d)?" on":"")}),el("span",{class:"mk r"+(reads.has(d)?" on":"")}),
       el("span",{class:"dow",text:new Date(y,m-1,dd).toLocaleDateString("en-GB",{weekday:"narrow"})})));
   });
@@ -1213,7 +1209,7 @@ function progressView(){
     el("div",{class:"legend"},el("span",{},el("span",{class:"mk p on"}),"Practice"),el("span",{},el("span",{class:"mk r on"}),"School book")),
     el("button",{class:"btn small"+(readToday?"":" ghost"),"aria-pressed":String(readToday),on:{click:()=>{
       if(readToday)state.reads=state.reads.filter(d=>d!==t);else{state.reads.push(t);state.reads=state.reads.slice(-400)}save();render()}}},
-      readToday?"✓ School book read today":"Tick: read her school book today"),
+      readToday?"✓ School book read today":"Tick: read ⟦her⟧ school book today"),
     med?el("p",{class:"note",text:`Sessions usually take about ${mins} minute${mins>1?"s":""}.`}):null));
 
   // Sounds
@@ -1226,14 +1222,14 @@ function progressView(){
     soundsPanel.append(el("div",{class:"gsgrid"},taughtG.map(g=>{const st=gStatus(g);
       return el("span",{class:"gs "+st,title:`${gOf(g)}${EX[g]?" as in "+EX[g]:""}: ${LABEL[st]}`},gOf(g),g.includes(":")?el("small",{text:EX[g]}):null,st==="secure"?el("span",{class:"ic",text:"✓"}):st==="help"?el("span",{class:"ic",text:"!"}):null)})));
     soundsPanel.append(el("div",{class:"legend"},Object.keys(LABEL).map(k=>el("span",{},el("span",{class:"sw "+k}),`${LABEL[k]} (${counts[k]})`))));
-  }else soundsPanel.append(el("p",{class:"empty",text:"Tick the sounds she has been taught under Sounds."}));
-  left.append(soundsPanel,mathsProgressPanel());right.prepend(pacePanel());right.append(teacherPanel());
+  }else soundsPanel.append(el("p",{class:"empty",text:"Tick the sounds ⟦she⟧ has been taught under Sounds."}));
+  left.append(soundsPanel,mathsProgressPanel());right.prepend(pacePanel());
 
   // Worth mentioning to her teacher
   const stuck=(map)=>Object.entries(map).filter(([k,c])=>c.reps>=3&&c.box<=1).map(([k])=>k);
   const flags=[...stuck(S.gcards).filter(g=>S.taught[g]).map(v=>({v,k:"sound"})),...stuck(S.cards).map(v=>({v,k:"word"})),...stuck(state.cards).filter(w=>state.taught[w]).map(v=>({v,k:"tricky word"})),
     ...Object.entries(MS().stats).filter(([k,st])=>st.r.length>=3&&st.r.slice(-3).every(x=>x<1)).map(([k])=>{const [t,v]=k.split(":");return {v:v||"",k:(ACTS[t]?ACTS[t].name:t).toLowerCase()}})];
-  const teacher=el("section",{class:"panel"},el("h2",{text:"Worth a word with her teacher"}));
+  const teacher=el("section",{class:"panel"},el("h2",{text:"Worth a word with ⟦her⟧ teacher"}));
   if(flags.length)teacher.append(el("p",{class:"note",text:"Still 'Not yet' after three or more tries:"}),
     el("div",{class:"chips"},flags.map(f=>el("span",{class:"chip",title:f.k},f.v,el("span",{class:"tag",text:f.k})))));
   else teacher.append(el("p",{class:"muted",text:"Nothing stands out. Anything still marked 'Not yet' after three tries will appear here."}));
@@ -1246,8 +1242,8 @@ function progressView(){
   const helpWords=[...Object.entries(S.cards).filter(([w,c])=>c.last==="reset").map(([w])=>w),...tTaught.filter(w=>state.cards[w]&&state.cards[w].last==="reset")];
   right.append(el("section",{class:"panel"},el("h2",{text:"Words"}),
     el("div",{class:"minis"},
-      el("div",{class:"mini"},el("b",{text:String(decodable)}),el("span",{text:"Words she can decode with her sounds"})),
-      el("div",{class:"mini"},el("b",{text:String(ownW)}),el("span",{text:"Words she reads on her own"})),
+      el("div",{class:"mini"},el("b",{text:String(decodable)}),el("span",{text:"Words ⟦she⟧ can decode with ⟦her⟧ sounds"})),
+      el("div",{class:"mini"},el("b",{text:String(ownW)}),el("span",{text:"Words ⟦she⟧ reads on ⟦her⟧ own"})),
       el("div",{class:"mini"},el("b",{text:`${tSecure}/${tTaught.length}`}),el("span",{text:"Tricky words on sight"}))),
     helpWords.length?el("p",{class:"note",text:"Needed help last time. These come back tomorrow:"}):el("p",{class:"note",text:"No words needed help last time."}),
     helpWords.length?el("div",{class:"chips"},helpWords.map(w=>el("span",{class:"chip",text:w}))):null));
@@ -1280,19 +1276,19 @@ function layoutsFor(n){if(n>5)return ["frame","beads","pairs"];const L=["line","
 
 /* What each activity is, and which term plan switches it on. Plans follow the NCETM Mastering Number overviews. */
 const ACTS={
-  sub:{name:"Quick look",desc:"Subitising. Dots flash up and she says how many. Above 5 they come in fives, so she sees 7 as 5 and 2.",per:3},
-  cnt:{name:"Count the ducklings",desc:"Counting. She touches each duckling once, then says how many altogether.",per:2},
-  comp:{name:"Numbers inside numbers",desc:"Composition. A number shown in two colours, so she sees 5 as 3 and 2.",per:2},
-  cmp:{name:"Which has more?",desc:"Comparing. She taps the group with more.",per:1},
-  num:{name:"Match the numeral",desc:"She sees an amount and picks the written number that matches.",per:2},
-  miss:{name:"Hiding ducklings",desc:"Missing parts. She knows the whole and works out how many are hiding.",per:2},
+  sub:{name:"Quick look",desc:"Subitising. Dots flash up and ⟦she⟧ says how many. Above 5 they come in fives, so ⟦she⟧ sees 7 as 5 and 2.",per:3},
+  cnt:{name:"Count the ducklings",desc:"Counting. ⟦She⟧ touches each duckling once, then says how many altogether.",per:2},
+  comp:{name:"Numbers inside numbers",desc:"Composition. A number shown in two colours, so ⟦she⟧ sees 5 as 3 and 2.",per:2},
+  cmp:{name:"Which has more?",desc:"Comparing. ⟦She⟧ taps the group with more.",per:1},
+  num:{name:"Match the numeral",desc:"⟦She⟧ sees an amount and picks the written number that matches.",per:2},
+  miss:{name:"Hiding ducklings",desc:"Missing parts. ⟦She⟧ knows the whole and works out how many are hiding.",per:2},
   dbl:{name:"Doubles",desc:"Two equal groups. Double 3 is 6.",per:1},
-  more:{name:"One more, one less",desc:"She finds the number one more or one less than a group.",per:2},
+  more:{name:"One more, one less",desc:"⟦She⟧ finds the number one more or one less than a group.",per:2},
   oe:{name:"Odd or even?",desc:"Dots in pairs. Even numbers pair up with none left over.",per:1},
   story:{name:"Number stories",desc:"First, then, now. 'First there were 3. Then 2 more came. Now there are 5.'",per:2},
   b10:{name:"Make 10",desc:"A ten frame with some spaces. How many more to make 10?",per:2},
   teen:{name:"Ten and a bit",desc:"Teen numbers as a full ten and some more. 13 is 10 and 3.",per:2},
-  line:{name:"Number line",desc:"She places a number on a line from 0 to 20, using 5, 10 and 15 to help.",per:1},
+  line:{name:"Number line",desc:"⟦She⟧ places a number on a line from 0 to 20, using 5, 10 and 15 to help.",per:1},
   sum:{name:"Number sentences",desc:"Short addition and subtraction sentences within 10, with dots to help.",per:2}
 };
 const PLANS={
@@ -1389,20 +1385,20 @@ function numberOptions(ans,lo=0,hi=20){
 function choiceSpec(item){
   const S=MS().settings;
   switch(item.act){
-    case "num":return {kind:"Match the numeral",visual:dotsSVG(item.n,item.lay),q:"Which number shows how many?",tip:"She looks at the dots, says how many and taps the matching number.",opts:numberOptions(item.ans,1,Math.max(10,S.max)),key:"num:"+item.n};
+    case "num":return {kind:"Match the numeral",visual:dotsSVG(item.n,item.lay),q:"Which number shows how many?",tip:"⟦She⟧ looks at the dots, says how many and taps the matching number.",opts:numberOptions(item.ans,1,Math.max(10,S.max)),key:"num:"+item.n};
     case "miss":{const v=el("div",{class:"hide-scene"},duckGroup(item.n-item.k),el("span",{class:"reeds",html:REEDS}));
-      return {kind:"Hiding ducklings",visual:v,q:`There are ${item.n} ducklings. How many are hiding in the reeds?`,tip:"She knows the whole and can see one part, so the hiding part is what's left. Fingers help: hold up the whole, fold down the ones she can see.",opts:numberOptions(item.ans,1,item.n),key:"miss:"+item.n}}
+      return {kind:"Hiding ducklings",visual:v,q:`There are ${item.n} ducklings. How many are hiding in the reeds?`,tip:"⟦She⟧ knows the whole and can see one part, so the hiding part is what's left. Fingers help: hold up the whole, fold down the ones ⟦she⟧ can see.",opts:numberOptions(item.ans,1,item.n),key:"miss:"+item.n}}
     case "dbl":{const v=el("div",{class:"mirror"},dotsSVG(item.k,item.k<=6?"dice":"pairs"),el("span",{class:"mline"}),dotsSVG(item.k,item.k<=6?"dice":"pairs"));
       return {kind:"Doubles",visual:v,q:`Double ${item.k}. How many altogether?`,tip:`Two groups the same size. Double ${item.k} is ${item.k} and ${item.k} more.`,opts:numberOptions(item.ans,1,12),key:"dbl:"+item.k}}
-    case "more":return {kind:"One more, one less",visual:tenFrameSVG(item.n),q:`What is one ${item.up?"more":"less"} than this?`,tip:`First she says how many there are, then imagines one ${item.up?"more counter added":"counter taken away"}.`,opts:numberOptions(item.ans,0,Math.max(10,S.max)),key:"more:"+item.n};
+    case "more":return {kind:"One more, one less",visual:tenFrameSVG(item.n),q:`What is one ${item.up?"more":"less"} than this?`,tip:`First ⟦she⟧ says how many there are, then imagines one ${item.up?"more counter added":"counter taken away"}.`,opts:numberOptions(item.ans,0,Math.max(10,S.max)),key:"more:"+item.n};
     case "oe":return {kind:"Odd or even?",visual:dotsSVG(item.n,"pairs"),q:"Is this number odd or even?",tip:"Even numbers make pairs with none left over. Odd numbers have one left on its own.",opts:["Odd","Even"],key:"oe"};
     case "story":{const v=el("div",{class:"story"},
         el("div",{class:"spanel"},el("span",{class:"slabel",text:"First"}),duckGroup(item.a)),
         el("span",{class:"sarrow",text:"→"}),
         el("div",{class:"spanel"},el("span",{class:"slabel",text:"Then"}),item.plus?el("div",{class:"dgroup"},el("span",{class:"plus",text:"+"}),...range(1,item.b).map(()=>duckSpan())):el("div",{class:"dgroup"},...range(1,item.a).map((x,i)=>duckSpan(i>=item.a-item.b?"gone":"")))));
       const q=item.plus?`First there were ${item.a} ducklings. Then ${item.b} more came. How many are there now?`:`First there were ${item.a} ducklings. Then ${item.b} swam away. How many are there now?`;
-      return {kind:"Number story",visual:v,q,tip:"Read the story aloud: first, then, now. She can use the picture or her fingers.",opts:numberOptions(item.ans,0,10),key:"story"}}
-    case "b10":return {kind:"Make 10",visual:tenFrameSVG(item.n),q:"How many more to make 10?",tip:`She counts the empty spaces, or knows that ${item.n} and ${10-item.n} make 10.`,opts:numberOptions(item.ans,0,10),key:"b10:"+item.n};
+      return {kind:"Number story",visual:v,q,tip:"Read the story aloud: first, then, now. ⟦She⟧ can use the picture or ⟦her⟧ fingers.",opts:numberOptions(item.ans,0,10),key:"story"}}
+    case "b10":return {kind:"Make 10",visual:tenFrameSVG(item.n),q:"How many more to make 10?",tip:`⟦She⟧ counts the empty spaces, or knows that ${item.n} and ${10-item.n} make 10.`,opts:numberOptions(item.ans,0,10),key:"b10:"+item.n};
     case "teen":return {kind:"Ten and a bit",visual:tenFrameSVG(item.n),q:"How many altogether?",tip:`One full ten and ${item.n-10} more. ${item.n} is 10 and ${item.n-10}.`,opts:numberOptions(item.ans,10,20),key:"teen:"+item.n};
     case "sum":{const v=el("div",{class:"sumv"},el("div",{class:"sumtext",text:`${item.a} ${item.plus?"+":"−"} ${item.b} =`}),
         item.plus?dotsSVG(item.a+item.b,"line",{split:item.a}):dotsSVG(item.a,"line",{split:item.a-item.b}));
@@ -1413,7 +1409,7 @@ function choiceSpec(item){
 const MATHS_TIPS=[
   "Count the stairs together as you climb them, one number for each step.",
   "Lay the table together: one fork for each person.",
-  "Roll a dice and ask how many dots she can see without counting.",
+  "Roll a dice and ask how many dots ⟦she⟧ can see without counting.",
   "Hide some toys under a cup. Show three, cover one: how many are still showing?",
   "Share four grapes onto two plates. How many on each? Try another way.",
   "Hold up fingers for a moment and ask how many. Try 5 on one hand and 1 on the other.",
@@ -1437,7 +1433,7 @@ function mathsCard(item,flash,advance){
       setTimeout(()=>{if(!stage.isConnected||revealed)return;stage.replaceChildren(el("div",{class:"mhide",text:"?"}));caption.textContent="How many did you see?"},S.speed)};
     look.addEventListener("click",flashDots);
     flash.append(kind("Quick look"),stage,caption,
-      el("p",{class:"tip",text:item.n>5?"Bigger numbers come in fives. Ask how many and how she saw them: '5 and 2 makes 7.'":"The dots appear for a moment, too quickly to count. Ask how many, then how she saw them: 'I saw 2 and 2.' Counting one by one is fine, but mark it as counted."}));
+      el("p",{class:"tip",text:item.n>5?"Bigger numbers come in fives. Ask how many and how ⟦she⟧ saw them: '5 and 2 makes 7.'":"The dots appear for a moment, too quickly to count. Ask how many, then how ⟦she⟧ saw them: 'I saw 2 and 2.' Counting one by one is fine, but mark it as counted."}));
     side.push(el("div",{class:"row",style:"justify-content:center"},
       el("button",{class:"btn ghost small",on:{click:()=>{revealed=false;flashDots()}}},"Show again"),
       el("button",{class:"btn ghost small",on:{click:()=>{revealed=true;stage.replaceChildren(dotsSVG(item.n,item.lay,{pts:item.pts}));caption.textContent=item.n>5?`It was ${item.n}: 5 and ${item.n-5}.`:`It was ${item.n}.`}}},"Show answer")));
@@ -1451,7 +1447,7 @@ function mathsCard(item,flash,advance){
         if(done===item.n)caption.textContent="So how many ducklings are there?"});field.append(b)});
     stage.append(field);stage.classList.add("wide");
     flash.append(kind("Count the ducklings"),stage,caption,
-      el("p",{class:"tip",text:"One number for each duckling, and each one counted once. Then ask how many there are. The last number she said tells her, and saying it again shows she knows that."}));
+      el("p",{class:"tip",text:"One number for each duckling, and each one counted once. Then ask how many there are. The last number ⟦she⟧ said tells ⟦her-o⟧, and saying it again shows ⟦she⟧ knows that."}));
     side.push(el("div",{class:"row",style:"justify-content:center"},
       el("button",{class:"btn ghost small",on:{click:()=>{field.querySelectorAll(".counted").forEach(b=>b.classList.remove("counted"));done=0;caption.textContent="Touch each duckling once as you count."}}},"Start again"),
       el("button",{class:"btn ghost small",on:{click:()=>{caption.textContent=`There are ${item.n}.`}}},"Show answer")));
@@ -1461,7 +1457,7 @@ function mathsCard(item,flash,advance){
     stage.append(dotsSVG(item.n,item.lay,{split:item.a}));
     caption.textContent="What can you see?";
     flash.append(kind("Numbers inside numbers"),stage,caption,
-      el("p",{class:"tip",text:`Ask how many pink, how many yellow and how many altogether. Listen for 'I see ${item.a} and ${item.n-item.a}, that makes ${item.n}.' Then ask if she can see it another way.`}));
+      el("p",{class:"tip",text:`Ask how many pink, how many yellow and how many altogether. Listen for 'I see ${item.a} and ${item.n-item.a}, that makes ${item.n}.' Then ask if ⟦she⟧ can see it another way.`}));
     side.push(el("div",{class:"row",style:"justify-content:center"},
       el("button",{class:"btn ghost small",on:{click:()=>{caption.textContent=`${item.a} and ${item.n-item.a} make ${item.n}.`}}},"Show answer")));
     const go=r=>{mRecord("comp:"+item.n,r==="up"?1:r==="same"?.5:0);advance(r)};
@@ -1480,7 +1476,7 @@ function mathsCard(item,flash,advance){
     stage.append(trays);stage.classList.add("wide");
     caption.textContent="Which group has more ducklings?";
     flash.append(kind("Which has more?"),stage,caption,
-      el("p",{class:"tip",text:"She taps the group with more. With small groups she can often see it straight away, and with bigger ones she may need to count."}));
+      el("p",{class:"tip",text:"⟦She⟧ taps the group with more. With small groups ⟦she⟧ can often see it straight away, and with bigger ones ⟦she⟧ may need to count."}));
     side.push(next);n=0;
   }else if(item.kind==="mline"){
     const W=600,L=30,R=30,y=60,xs=v=>L+(W-L-R)*v/20;
@@ -1539,12 +1535,12 @@ function mathsSettingsView(){
     el("div",{class:"cols"},
       el("section",{class:"panel"},el("h2",{text:`${curTermLabel()} term`}),
         el("p",{text:MPLAN_TEXT[S.planKey]}),
-        el("p",{class:"note",text:"The plan changes by itself when the term changes. Her school year and term are on the Settings page."}),
+        el("p",{class:"note",text:"The plan changes by itself when the term changes. ⟦Her⟧ school year and term are on the Settings page."}),
         changed?el("button",{class:"btn small ghost",on:{click:resetPlan}},"Go back to this term's plan"):null),
       el("section",{class:"panel"},el("h2",{text:"Settings"}),
         seg("Numbers up to",[[5,"5"],[7,"7"],[10,"10"],[20,"20"]],"max"),
         seg("Quick look shows the dots for",[[1000,"1 second"],[1500,"1½ seconds"],[2500,"2½ seconds"]],"speed"),
-        el("p",{class:"note",text:"Shorter is better for subitising, because she can't count in that time. Lengthen it if she finds the quick look upsetting."}))),
+        el("p",{class:"note",text:"Shorter is better for subitising, because ⟦she⟧ can't count in that time. Lengthen it if ⟦she⟧ finds the quick look upsetting."}))),
     el("div",{class:"cols"},
       el("section",{class:"panel"},el("h2",{text:"Activities"}),...P.acts.map(sw),
         el("details",{class:"tblock"},el("summary",{text:"Other activities"}),...Object.keys(ACTS).filter(a=>!P.acts.includes(a)).map(sw)))));
@@ -1568,7 +1564,7 @@ function mathsProgressPanel(){
     if(KEYS[a])rows.push(el("div",{class:"mrow"},el("h3",{text:ACTS[a].name}),
       el("div",{class:"gsgrid"},KEYS[a].map(v=>{const k=a+":"+v,st=mStatus(k);
         return el("span",{class:"gs num "+st,title:`${ACTS[a].name} ${v}: ${LABEL[st]}`},String(v),st==="secure"?el("span",{class:"ic",text:"✓"}):st==="help"?el("span",{class:"ic",text:"!"}):null)}))));
-    else{const r=(MS().stats[a]||{r:[]}).r;lines.push(el("p",{class:"note",text:r.length?`${ACTS[a].name}: ${r.filter(x=>x===1).length} of her last ${r.length} right first time.`:`${ACTS[a].name}: not tried yet.`}))}
+    else{const r=(MS().stats[a]||{r:[]}).r;lines.push(el("p",{class:"note",text:r.length?`${ACTS[a].name}: ${r.filter(x=>x===1).length} of ⟦her⟧ last ${r.length} right first time.`:`${ACTS[a].name}: not tried yet.`}))}
   });
   return el("section",{class:"panel"},el("h2",{text:"Numbers"}),...rows,...lines,
     el("div",{class:"legend"},Object.keys(LABEL).map(k=>el("span",{},el("span",{class:"sw "+k}),LABEL[k]))));
@@ -1576,21 +1572,21 @@ function mathsProgressPanel(){
 
 /* ----- How it works (grown-ups only) ----- */
 const PHASES=[
-  ["Phase 2 · Reception, autumn term","Single letter sounds, starting with s a t p, then her first two-letter sounds such as ck, ll and sh. Short words like ‘sat’, ‘pin’ and ‘dog’."],
+  ["Phase 2 · Reception, autumn term","Single letter sounds, starting with s a t p, then ⟦her⟧ first two-letter sounds such as ck, ll and sh. Short words like ‘sat’, ‘pin’ and ‘dog’."],
   ["Phase 3 · Reception, spring term","More two- and three-letter sounds, such as ai, ee, oo, igh and ear, and longer tricky words like ‘was’ and ‘said’."],
   ["Phase 4 · Reception, summer term","No new sounds. Instead, longer words with consonants side by side, such as ‘frog’, ‘jump’ and ‘sandwich’."],
-  ["Phase 5 · Year 1","New spellings for sounds she knows (‘ay’ in ‘play’, ‘a-e’ in ‘shake’), then other sounds for letters she knows (the ‘o’ in ‘go’, the ‘ow’ in ‘snow’). The Phonics Screening Check comes in June, and a last block of spellings follows it."]
+  ["Phase 5 · Year 1","New spellings for sounds ⟦she⟧ knows (‘ay’ in ‘play’, ‘a-e’ in ‘shake’), then other sounds for letters ⟦she⟧ knows (the ‘o’ in ‘go’, the ‘ow’ in ‘snow’). The Phonics Screening Check comes in June, and a last block of spellings follows it."]
 ];
 const FIT=[
-  ["Sound sets","The sets on the Sounds page follow the order of her home reading books, which follow her lessons. Tick a sound only once school has taught it, and the app will never ask her to read anything that uses a sound she hasn't met."],
-  ["Warm-up sounds","Each phonics lesson at school opens by revisiting sounds she already knows. The warm-up does the same at home, mixing this week's sounds with earlier ones so none of them fade."],
-  ["Words with sound buttons","She taps each sound, says it and then runs her finger along the arrow to blend the sounds into a word. This is the core reading skill phonics builds."],
-  ["Her own pace","With her own pace switched on, the school's sequence is the floor, never the ceiling. The next sounds unlock, in the school's order, once her newest sounds are read straight away after a gap of two days or more, 90% of everything earlier is still fluent after four days or more, nothing has slipped, and she has read three words with the new sounds on her own. New sounds arrive with a 'New sound' card that shows you how to introduce them. The Progress page shows each condition and how close she is, plus a summary you can pass to her teacher so her books can keep up."],
+  ["Sound sets","The sets on the Sounds page follow the order of ⟦her⟧ home reading books, which follow ⟦her⟧ lessons. Tick a sound only once school has taught it, and the app will never ask ⟦her-o⟧ to read anything that uses a sound ⟦she⟧ hasn't met."],
+  ["Warm-up sounds","Each phonics lesson at school opens by revisiting sounds ⟦she⟧ already knows. The warm-up does the same at home, mixing this week's sounds with earlier ones so none of them fade."],
+  ["Words with sound buttons","⟦She⟧ taps each sound, says it and then runs ⟦her⟧ finger along the arrow to blend the sounds into a word. This is the core reading skill phonics builds."],
+  ["⟦Her⟧ own pace","With ⟦her⟧ own pace switched on, the school's sequence is the floor, never the ceiling. The next sounds unlock, in the school's order, once ⟦her⟧ newest sounds are read straight away after a gap of two days or more, 90% of everything earlier is still fluent after four days or more, nothing has slipped, and ⟦she⟧ has read three words with the new sounds on ⟦her⟧ own. New sounds arrive with a 'New sound' card that shows you how to introduce them. The Progress page shows each condition and how close ⟦she⟧ is."],
   ["Year 1 spellings","In Year 1 the Sounds page lists each new spelling with an example word, because one letter can make more than one sound. A split digraph such as a-e is shown with matching curved buttons under the a and the e."],
-  ["Alien words","Made-up words, like the ones in the Year 1 check. She can't know them by sight, so reading one shows she is decoding rather than remembering."],
-  ["Tricky words","The common words school teaches as tricky. The card shows which part breaks the rules she knows, so she sounds out the rest and learns only the odd bit."],
-  ["Spacing","Anything she reads easily comes back after a few days, then a week, then two weeks. Anything she finds hard comes back tomorrow. Short practice, aimed where it helps."],
-  ["Her reading book","Still the main event. School sends a reading practice book she should manage almost on her own, and a sharing book for you to read to her and enjoy together."]
+  ["Alien words","Made-up words, like the ones in the Year 1 check. ⟦She⟧ can't know them by sight, so reading one shows ⟦she⟧ is decoding rather than remembering."],
+  ["Tricky words","The common words school teaches as tricky. The card shows which part breaks the rules ⟦she⟧ knows, so ⟦she⟧ sounds out the rest and learns only the odd bit."],
+  ["Spacing","Anything ⟦she⟧ reads easily comes back after a few days, then a week, then two weeks. Anything ⟦she⟧ finds hard comes back tomorrow. Short practice, aimed where it helps."],
+  ["⟦Her⟧ reading book","Still the main event. School sends a reading practice book ⟦she⟧ should manage almost on ⟦her⟧ own, and a sharing book for you to read to ⟦her-o⟧ and enjoy together."]
 ];
 const TERMS=[
   ["Phoneme","","The smallest sound in a spoken word. ‘Ship’ has three phonemes, ‘sh’, ‘i’ and ‘p’. English has about 44."],
@@ -1603,19 +1599,19 @@ const TERMS=[
   ["CVC word","sat pin","A consonant, a vowel and a consonant. Most early Phase 2 words follow this pattern."],
   ["Adjacent consonants","stop damp","Two consonants side by side, each keeping its own sound. School teaches these properly in Phase 4. The app calls them two consonants together."],
   ["Pure sounds","","Saying a sound without adding ‘uh’. Say ‘mmm’, not ‘muh’, and a short ‘t’, not ‘tuh’. Pure sounds are what make blending work, because ‘c-a-t’ blends into ‘cat’ but ‘cuh-a-tuh’ does not."],
-  ["Blending","","Saying each sound in order and pushing them together to hear the word. This is how she reads."],
-  ["Segmenting","","The reverse of blending. She hears a word and splits it into its sounds so she can spell it. This is how she will write."],
+  ["Blending","","Saying each sound in order and pushing them together to hear the word. This is how ⟦she⟧ reads."],
+  ["Segmenting","","The reverse of blending. ⟦She⟧ hears a word and splits it into its sounds so ⟦she⟧ can spell it. This is how ⟦she⟧ will write."],
   ["Decoding","","Reading a written word by working out its sounds and blending them. Spelling is sometimes called encoding."],
-  ["Sound buttons","","A dot under each single-letter sound and a line under each two-letter sound. She touches each one as she says the sound."],
-  ["Tricky word","the","A common word with a spelling she hasn't been taught yet. School calls the unusual bit the tricky part. In ‘is’, the tricky part is the ‘s’, which says ‘z’."],
+  ["Sound buttons","","A dot under each single-letter sound and a line under each two-letter sound. ⟦She⟧ touches each one as ⟦she⟧ says the sound."],
+  ["Tricky word","the","A common word with a spelling ⟦she⟧ hasn't been taught yet. School calls the unusual bit the tricky part. In ‘is’, the tricky part is the ‘s’, which says ‘z’."],
   ["Alien word","","A made-up word built from real sounds, such as ‘tib’ or ‘zort’. Also called pseudo-words or nonsense words."],
-  ["Decodable book","","A book written almost entirely from sounds and tricky words she has already been taught, so she can read it herself."],
+  ["Decodable book","","A book written almost entirely from sounds and tricky words ⟦she⟧ has already been taught, so ⟦she⟧ can read it ⟦herself⟧."],
   ["Fluency","","Reading accurately at a comfortable pace, without sounding out every word. Reading with expression is called prosody."],
-  ["Comprehension","","Understanding what she has read. Talking about the story afterwards builds it."],
+  ["Comprehension","","Understanding what ⟦she⟧ has read. Talking about the story afterwards builds it."],
   ["Schwa","","The soft ‘uh’ sound in unstressed parts of words, such as the end of ‘the’ or the last ‘a’ in ‘banana’."],
   ["Phonics Screening Check","","A short one-to-one check in June of Year 1. Children read 40 words to a teacher, and half of them are alien words. The expected standard has been 32 out of 40 in recent years."],
   ["Mastery","","Knowing something well enough that it is accurate, automatic and still there after a break. The app checks all three before moving on, using a 90% threshold, the stricter end of what mastery learning research uses."],
-  ["Automaticity","","Recognising a sound or word instantly, without sounding it out. It frees her attention for meaning, which is why 'straight away' is the answer that counts for moving on."],
+  ["Automaticity","","Recognising a sound or word instantly, without sounding it out. It frees ⟦her⟧ attention for meaning, which is why 'straight away' is the answer that counts for moving on."],
   ["Spaced practice","","Coming back to something after a growing gap (2, 4, 7, then 14 days). Remembering after a gap is the best evidence that learning has stuck."],
   ["SSP","","Systematic synthetic phonics. Systematic means sounds are taught in a fixed order. Synthetic means children build words by blending sounds."]
 ];
@@ -1629,19 +1625,19 @@ const MPHASES=[
   ["Term 3 · Year 1, summer","Numbers to 20. Teen numbers as ten and a bit, the number line with 5, 10 and 15 as landmarks, even numbers as doubles, and writing number sentences."]
 ];
 const MFIT=[
-  ["Quick look","Dots flash up for a moment and she says how many. This is subitising, and the short flash stops her counting one by one. The dots come in the arrangements she meets in class, such as dice patterns, lines, pairs, five frames and a bead frame, as well as scattered."],
-  ["Count the ducklings","She touches each duckling once as she counts, then says how many there are. Each duckling can only be counted once, which practises matching one number to one thing. Saying the total at the end shows she knows the last number tells her how many."],
+  ["Quick look","Dots flash up for a moment and ⟦she⟧ says how many. This is subitising, and the short flash stops ⟦her-o⟧ counting one by one. The dots come in the arrangements ⟦she⟧ meets in class, such as dice patterns, lines, pairs, five frames and a bead frame, as well as scattered."],
+  ["Count the ducklings","⟦She⟧ touches each duckling once as ⟦she⟧ counts, then says how many there are. Each duckling can only be counted once, which practises matching one number to one thing. Saying the total at the end shows ⟦she⟧ knows the last number tells ⟦her-o⟧ how many."],
   ["Numbers inside numbers","A number is shown in two colours, so 5 might be 3 pink and 2 yellow. Talking about the parts builds the idea that every number is made of smaller numbers. This is the start of number bonds and addition."],
-  ["Which has more?","Two groups of ducklings side by side, and she taps the group with more. Small groups she can often judge by eye. Bigger ones need counting."],
-  ["Her own pace","Each activity and number is scheduled with the same spacing as the reading cards. When 90% of the current stage is answered right first time after a gap of four days or more, with nothing slipping, the next stage of the Mastering Number sequence unlocks. Her school's term is the floor, so she never goes backwards."],
+  ["Which has more?","Two groups of ducklings side by side, and ⟦she⟧ taps the group with more. Small groups ⟦she⟧ can often judge by eye. Bigger ones need counting."],
+  ["⟦Her⟧ own pace","Each activity and number is scheduled with the same spacing as the reading cards. When 90% of the current stage is answered right first time after a gap of four days or more, with nothing slipping, the next stage of the Mastering Number sequence unlocks. ⟦Her⟧ school's term is the floor, so ⟦she⟧ never goes backwards."],
   ["Later activities","From the spring term of Reception, new activities join as the class meets them. These include matching numerals, hiding ducklings (missing parts), doubles, one more and one less, odd and even, number stories, make 10, ten and a bit, the number line and number sentences. The Maths page in Grown-ups shows which are on this term."],
-  ["Real-life maths","Each session ends with an idea for later in the day, such as counting stairs or sharing grapes. Mastering Number puts a lot of weight on everyday maths, and these ideas give her more practice than any screen can."]
+  ["Real-life maths","Each session ends with an idea for later in the day, such as counting stairs or sharing grapes. Mastering Number puts a lot of weight on everyday maths, and these ideas give ⟦her-o⟧ more practice than any screen can."]
 ];
 const MTERMS=[
   ["Mastering Number","","A national programme for Reception to Year 2, run by the Maths Hubs and coordinated by the NCETM. Classes have a short extra session each day, on top of the main maths lesson, to build a deep sense of number."],
   ["Subitising","","Knowing how many are in a small group just by looking, without counting. Most young children can subitise up to about 4 or 5."],
   ["Perceptual subitising","","Seeing a small amount instantly, like the 3 on a dice."],
-  ["Conceptual subitising","","Seeing a bigger amount as parts and putting them together. She might see 5 on a dice as 4 and 1."],
+  ["Conceptual subitising","","Seeing a bigger amount as parts and putting them together. ⟦She⟧ might see 5 on a dice as 4 and 1."],
   ["One-to-one correspondence","","Matching one number name to each object, and counting each object exactly once."],
   ["Stable order","","Saying the number names in the same order every time: one, two, three, four, five."],
   ["Cardinality","","Understanding that the last number said when counting tells you how many there are altogether."],
@@ -1651,31 +1647,31 @@ const MTERMS=[
   ["Structured and unstructured","","Dots in a pattern (a dice, a line or a frame) are structured and easier to subitise. Scattered dots are unstructured."],
   ["Five frame and ten frame","","A row of 5 boxes, or 2 rows of 5, with one counter in each box. They help children see numbers in relation to 5 and 10."],
   ["Rekenrek","","A bead frame used throughout Mastering Number, with rows of 10 beads in two colours, 5 of one and 5 of the other, so 7 is easy to see as 5 and 2. The bead frame in the app is modelled on one row of it."],
-  ["Finger patterns","","Showing numbers on fingers without counting each finger. Mastering Number uses them a lot, so let her use her fingers."],
+  ["Finger patterns","","Showing numbers on fingers without counting each finger. Mastering Number uses them a lot, so let ⟦her-o⟧ use ⟦her⟧ fingers."],
   ["Five and a bit","","Seeing 6, 7, 8 and 9 as 5 and some more, using a full hand or a full row of beads. This comes in the spring term."],
   ["Number bonds","","Pairs of numbers that make a total, such as 3 and 2 making 5. Reception builds the understanding behind them."],
   ["Numeral","","The written symbol for a number, such as 4. Children learn amounts first and link them to numerals later."],
   ["Odd and even","","Even numbers can be made into pairs with none left over. Odd numbers always have one left on its own."],
   ["First, then, now","","The story shape used for adding and taking away in Year 1. 'First there were 4. Then 2 more came. Now there are 6.'"],
   ["Ten and a bit","","Seeing 11 to 19 as a full ten and some more. 14 is 10 and 4, which is why it sounds like four-teen."],
-  ["Number line","","A line with numbers marked in order. In Year 1 she places numbers on a line to 20, using 5, 10 and 15 as landmarks."]
+  ["Number line","","A line with numbers marked in order. In Year 1 ⟦she⟧ places numbers on a line to 20, using 5, 10 and 15 as landmarks."]
 ];
 function mathsGuide(){
   const left=el("section",{class:"panel prose"},
     el("h2",{text:"How maths works in Reception"}),
-    el("p",{text:"Before children can add and subtract, they need a secure feel for what numbers are. Her class follows Mastering Number, which spends Reception building that feel slowly and deeply with small numbers, rather than racing on to bigger ones."}),
+    el("p",{text:"Before children can add and subtract, they need a secure feel for what numbers are. ⟦Her⟧ class follows Mastering Number, which spends Reception building that feel slowly and deeply with small numbers, rather than racing on to bigger ones."}),
     el("p",{text:"Each day the class has a short Mastering Number session on top of the main maths lesson. Children look at dot patterns, use their fingers and a bead frame called a rekenrek, and talk about what they see. The emphasis is on seeing numbers and explaining them, not on writing sums."}),
     el("h2",{text:"How Reception and Year 1 unfold"}),
     el("ol",{class:"phases"},MPHASES.map(([t,d],i)=>{const here=i===MPLAN_ORDER.indexOf(MS().settings.planKey||planKey());return el("li",{class:here?"here":""},
-      el("div",{},el("b",{text:t}),here?el("span",{class:"here-tag",text:"She is here"}):null,el("p",{text:d})))})),
-    el("p",{class:"note",text:"This follows the published Mastering Number overviews for Reception and Year 1. Her school's letter adds the rules of counting to the first half term, so the app includes counting from the start."}),
+      el("div",{},el("b",{text:t}),here?el("span",{class:"here-tag",text:"⟦She⟧ is here"}):null,el("p",{text:d})))})),
+    el("p",{class:"note",text:"This follows the published Mastering Number overviews for Reception and Year 1. ⟦Her⟧ school's letter adds the rules of counting to the first half term, so the app includes counting from the start."}),
     el("h2",{text:"How this app fits in"}),
     el("dl",{class:"fit"},MFIT.flatMap(([t,d])=>[el("dt",{text:t}),el("dd",{text:d})])),
     el("h2",{text:"Helping at home"}),
     el("ul",{},
       el("li",{text:"Ask two questions, how many and how did you see it. The second matters more."}),
       el("li",{text:"Count things you can't touch as well, such as claps, jumps and the beeps of the microwave."}),
-      el("li",{text:"Let her use her fingers. Mastering Number teaches finger patterns on purpose."}),
+      el("li",{text:"Let ⟦her-o⟧ use ⟦her⟧ fingers. Mastering Number teaches finger patterns on purpose."}),
       el("li",{text:"Stay with small numbers. Being certain about 5 is worth more now than counting to 100."})),
     el("p",{},el("a",{href:"https://axis.ncetm.org.uk/media/qytg0juv/mastering-number-reception-overview.pdf",target:"_blank",rel:"noopener",text:"Mastering Number Reception overview (NCETM)"})));
   const ex=el("div",{class:"example mex"},dotsSVG(5,"dice",{split:4}));
@@ -1693,13 +1689,13 @@ function readingGuide(){
   left.append(
     el("h2",{text:"What phonics is"}),
     el("p",{text:"English is written with 26 letters but spoken with about 44 sounds. Phonics teaches children which letters write which sounds, so that when they meet a new word they can work it out for themselves instead of guessing from the pictures or memorising the word's shape."}),
-    el("p",{text:"Her school uses systematic synthetic phonics, taught through a programme called Little Wandle Letters and Sounds Revised, which is on the Department for Education's list of approved phonics programmes. Sounds arrive in a fixed order, a few each week, and each daily lesson revisits old sounds, teaches a new one, practises it and then uses it to read."}),
+    el("p",{text:"⟦Her⟧ school uses systematic synthetic phonics, taught through a programme called Little Wandle Letters and Sounds Revised, which is on the Department for Education's list of approved phonics programmes. Sounds arrive in a fixed order, a few each week, and each daily lesson revisits old sounds, teaches a new one, practises it and then uses it to read."}),
     el("h2",{text:"How Reception and Year 1 unfold"}),
     el("ol",{class:"phases"},PHASES.map(([t,d],i)=>{const here=i===({"R-autumn":0,"R-spring":1,"R-summer":2}[planKey()]??3);return el("li",{class:here?"here":""},
-      el("div",{},el("b",{text:t}),here?el("span",{class:"here-tag",text:"She is here"}):null,el("p",{text:d})))})),
+      el("div",{},el("b",{text:t}),here?el("span",{class:"here-tag",text:"⟦She⟧ is here"}):null,el("p",{text:d})))})),
     el("h2",{text:"How this app fits in"}),
     el("dl",{class:"fit"},FIT.flatMap(([t,d])=>[el("dt",{text:t}),el("dd",{text:d})])),
-    el("p",{text:"Her current home books come from Oxford Reading Tree's Floppy's Phonics, which orders a few sounds differently from Little Wandle. That is why ‘net’ and ‘dog’ appeared before she had been taught e, o and g. When a book word uses a sound she hasn't met, read it to her and carry on."}),
+    el("p",{text:"⟦Her⟧ current home books come from Oxford Reading Tree's Floppy's Phonics, which orders a few sounds differently from Little Wandle. That is why ‘net’ and ‘dog’ appeared before ⟦she⟧ had been taught e, o and g. When a book word uses a sound ⟦she⟧ hasn't met, read it to ⟦her-o⟧ and carry on."}),
     el("h2",{text:"What the app leaves to you and school"}),
     el("p",{text:"It plays no sounds, because computer voices add ‘uh’ to letter sounds and would undo what school teaches. The Little Wandle videos show exactly how each sound is said, and they are worth watching once per set."},
       " ",el("a",{href:"https://www.littlewandle.org.uk/resources/for-parents/",target:"_blank",rel:"noopener",text:"Little Wandle for parents"})),
@@ -1708,7 +1704,7 @@ function readingGuide(){
     el("ul",{},
       el("li",{text:"Little and often. Five minutes a day does more than half an hour at the weekend."}),
       el("li",{text:"Use pure sounds, and call letters by their sounds until school teaches the letter names."}),
-      el("li",{text:"If she is stuck, tell her the sound or the word and move on. Praise the effort as much as the answer."}),
+      el("li",{text:"If ⟦she⟧ is stuck, tell ⟦her-o⟧ the sound or the word and move on. Praise the effort as much as the answer."}),
       el("li",{text:"Keep the sharing book for fun. Use voices, talk about the pictures and ask what might happen next."})));
   const ex=el("div",{class:"example"},wordNode([["sh"],["o"],["p"]],{marks:true}));
   const right=el("section",{class:"panel prose"},
@@ -1728,7 +1724,7 @@ function settingsPanel(){
   let t;nameIn.addEventListener("input",()=>{clearTimeout(t);t=setTimeout(()=>{state.name=nameIn.value;save();setTitle()},500)});
   const confirmBox=el("div",{class:"confirm"});
   const resetBtn=el("button",{class:"btn ghost small",on:{click:()=>{
-    confirmBox.replaceChildren(el("span",{class:"note",text:"Clear all practice and reading history? Ticked sounds, words and her book list stay."}),
+    confirmBox.replaceChildren(el("span",{class:"note",text:"Clear all practice and reading history? Ticked sounds, words and ⟦her⟧ book list stay."}),
       el("button",{class:"btn small danger",on:{click:()=>{state.cards={};state.days=[];state.log=[];state.reads=[];state.maths.stats={};state.sounds.cards={};state.sounds.gcards={};save();render()}}},"Clear history"),
       el("button",{class:"btn ghost small",on:{click:()=>confirmBox.replaceChildren(resetBtn)}},"Cancel"));
   }}},"Reset progress…");
@@ -1737,23 +1733,27 @@ function settingsPanel(){
     el("div",{class:"seg","aria-labelledby":id},opts.map(([v,t,sw])=>el("button",{type:"button","aria-pressed":String(cur===v),on:{click:()=>set(v)}},sw?el("span",{class:"swatch "+v}):null,t))));
   return el("div",{class:"soundsgrid"},
     el("div",{class:"cols"},
-      el("section",{class:"panel"},el("h2",{text:"Her school year"}),
+      el("section",{class:"panel"},el("h2",{text:"Child"}),
+      el("div",{class:"childrow"},
+        el("div",{class:"field"},el("label",{for:"reader-name",text:"Child's name"}),nameIn),
+        seg("Boy or girl",[["girl","Girl"],["boy","Boy"]],state.child,v=>{state.child=v;save();render()},"lab-child")),
+      el("p",{class:"note",text:"Sets he or she, his or her, throughout the app."})),
+      el("section",{class:"panel"},el("h2",{text:"⟦Her⟧ school year"}),
         seg("School year",[["R","Reception"],["Y1","Year 1"]],state.year,setYear,"lab-year"),
         seg("Term",[["auto","From the date"],["autumn","Autumn"],["spring","Spring"],["summer","Summer"]],state.term,v=>{state.term=v;save();render()},"lab-term"),
-        el("p",{class:"note",text:`Now set to ${curTermLabel()} term. The year and term choose this term's maths plan, mark where she is in the guides and open the right block of tricky words. Change the school year yourself each September.`}),
+        el("p",{class:"note",text:`Now set to ${curTermLabel()} term. The year and term choose this term's maths plan, mark where ⟦she⟧ is in the guides and open the right block of tricky words. Change the school year yourself each September.`}),
         state.year==="Y1"?el("div",{class:"field"},
-          el("p",{class:"note",text:"Year 1 starts by reviewing everything from Reception. If she has been taught all of it, you can tick every Reception sound and tricky word in one go. Nothing is ticked unless you press the button."}),
+          el("p",{class:"note",text:"Year 1 starts by reviewing everything from Reception. If ⟦she⟧ has been taught all of it, you can tick every Reception sound and tricky word in one go. Nothing is ticked unless you press the button."}),
           state.yearSnap?el("div",{class:"row"},el("span",{class:"note",text:"All Reception sounds and tricky words are ticked."}),el("button",{class:"btn ghost small",on:{click:undoTickAll}},"Undo"))
             :el("div",{class:"row"},el("button",{class:"btn ghost small",on:{click:tickAllReception}},"Tick all Reception sounds and tricky words"))):null),
       el("section",{class:"panel"},el("h2",{text:"Pace"}),
-        seg("Reading",[["own","Her own pace"],["school","Follow school"]],state.pace.reading,v=>{state.pace.reading=v;save();render()},"lab-pr"),
-        seg("Maths",[["own","Her own pace"],["school","Follow school"]],state.pace.maths,v=>{state.pace.maths=v;MS().settings.planKey=null;save();render()},"lab-pm"),
-        el("p",{class:"note",text:"Her own pace: the school's sequence is the floor. New sounds, tricky words and maths stages unlock, in the school's order, as soon as she is fluent and confident after a gap. Follow school: only what you tick, and the maths plan for her term."})),
-      el("section",{class:"panel"},el("h2",{text:"Look"}),
-        seg("Colour theme",[["pink","Pink",true],["blue","Blue",true],["green","Green",true]],state.palette,v=>{state.palette=v;save();render()},"lab-pal"),
-        el("div",{class:"field"},el("label",{for:"reader-name",text:"Reader's name"}),nameIn))),
+        seg("Reading",[["own","⟦Her⟧ own pace"],["school","Follow school"]],state.pace.reading,v=>{state.pace.reading=v;save();render()},"lab-pr"),
+        seg("Maths",[["own","⟦Her⟧ own pace"],["school","Follow school"]],state.pace.maths,v=>{state.pace.maths=v;MS().settings.planKey=null;save();render()},"lab-pm"),
+        el("p",{class:"note",text:"⟦Her⟧ own pace: the school's sequence is the floor. New sounds, tricky words and maths stages unlock, in the school's order, as soon as ⟦she⟧ is fluent and confident after a gap. Follow school: only what you tick, and the maths plan for ⟦her⟧ term."}))),
     el("div",{class:"cols"},
-      el("section",{class:"panel"},el("h2",{text:"Progress"}),el("p",{class:"note",text:"Clearing history keeps her ticked sounds, tricky words, book list and settings."}),confirmBox)));
+      el("section",{class:"panel"},el("h2",{text:"Look"}),
+        seg("Colour theme",[["pink","Pink",true],["blue","Blue",true],["green","Green",true]],state.palette,v=>{state.palette=v;save();render()},"lab-pal")),
+      el("section",{class:"panel"},el("h2",{text:"Progress"}),el("p",{class:"note",text:"Clearing history keeps ⟦her⟧ ticked sounds, tricky words, book list and settings."}),confirmBox)));
 }
 
 /* A word drawn as graphemes with sound buttons. tap=true makes each grapheme a button she can tap in order. */
@@ -1802,7 +1802,7 @@ function cardView(){
       reveal.textContent=revealed?"Hide the tricky part":"Show the tricky part";
     }}},"Show the tricky part");
     flash.append(el("span",{class:"kind",text:"Tricky word"}),wd,reveal,
-      el("p",{class:"tip",text:`Ask ${readerName()} to read the word. If she gets stuck, show the tricky part, sound out the bits she knows together and tell her the tricky sound.`}));
+      el("p",{class:"tip",text:`Ask ${readerName()} to read the word. If ⟦she⟧ gets stuck, show the tricky part, sound out the bits ⟦she⟧ knows together and tell ⟦her-o⟧ the tricky sound.`}));
     const go=r=>{schedule(state.cards,item.v,r);advance(r)};
     grades=[["g-auto","Read it straight away",()=>go("up")],["g-sound","Sounded it out",()=>go("same")],["g-help","Needed help",()=>go("reset")]];
   }else if(item.kind==="g"){
@@ -1811,12 +1811,12 @@ function cardView(){
     centreGlyph(letters);
     const teach=!state.sounds.gcards[item.v]&&state.sounds.auto[item.v];
     flash.append(el("span",{class:"kind",text:teach?"New sound":"Sound"}),wd,
-      el("p",{class:"tip",text:teach?`She's ready for this one. Teach it first: "This is ${gOf(item.v)}${EX[item.v]?`, as in ${EX[item.v]}`:""}." Say it together three times, then ask her to say it on her own.${gOf(item.v).length===1?` Keep it a pure sound: ${gOf(item.v)}, not ${gOf(item.v)}uh.`:""} The Little Wandle parent videos show each sound.`
+      el("p",{class:"tip",text:teach?`⟦She⟧'s ready for this one. Teach it first: "This is ${gOf(item.v)}${EX[item.v]?`, as in ${EX[item.v]}`:""}." Say it together three times, then ask ⟦her-o⟧ to say it on ⟦her⟧ own.${gOf(item.v).length===1?` Keep it a pure sound: ${gOf(item.v)}, not ${gOf(item.v)}uh.`:""} The Little Wandle parent videos show each sound.`
         :item.v==="le"?"This one is the ending in tickle: a short l sound, not two separate letters."
         :isSplit(item.v)?`A split digraph: the two letters work together with another letter in between, as in '${EX[item.v]}'.`
-        :item.v.includes(":")?`Here ${gOf(item.v)} makes the sound in '${EX[item.v]}'. Ask for that sound, then any others she knows for ${gOf(item.v)}.`
-        :EX[item.v]&&item.v.length>1?`Ask her to say the sound, as in '${EX[item.v]}'. Two or more letters, one sound.`
-        :"Ask her to say the sound. Keep it short and clean: mmm, not muh; t, not tuh."}));
+        :item.v.includes(":")?`Here ${gOf(item.v)} makes the sound in '${EX[item.v]}'. Ask for that sound, then any others ⟦she⟧ knows for ${gOf(item.v)}.`
+        :EX[item.v]&&item.v.length>1?`Ask ⟦her-o⟧ to say the sound, as in '${EX[item.v]}'. Two or more letters, one sound.`
+        :"Ask ⟦her-o⟧ to say the sound. Keep it short and clean: mmm, not muh; t, not tuh."}));
     const go=r=>{schedule(state.sounds.gcards,item.v,r);advance(r)};
     grades=teach?[["g-auto","Got it",()=>go("up")],["g-help","Needs more",()=>go("reset")]]:[["g-auto","Knew it straight away",()=>go("up")],["g-help","Not yet",()=>go("reset")]];n=2;
   }else{
@@ -1825,13 +1825,13 @@ function cardView(){
     const wd=wordNode(spellParts(partsFor(item.v)).map(t=>[t.g,null,t.pair?"split":null,t.pair]),{marks:true,tap:true,onAll:all=>sweep.classList.toggle("on",all)});
     flash.append(
       alien?el("span",{class:"kind alien",html:ALIEN_SVG+"Alien word · not a real word"})
-           :el("span",{class:"kind",text:item.book?"From her reading book":"Word to read"}),
+           :el("span",{class:"kind",text:item.book?"From ⟦her⟧ reading book":"Word to read"}),
       wd,sweep,
       el("p",{class:"tip",text:alien
-        ?"Aliens use made-up names. She sounds it out and blends it just like a real word, which shows she is decoding rather than remembering."
-        :"She taps each sound button and says the sound, then runs her finger along the arrow and pushes the sounds together."}));
+        ?"Aliens use made-up names. ⟦She⟧ sounds it out and blends it just like a real word, which shows ⟦she⟧ is decoding rather than remembering."
+        :"⟦She⟧ taps each sound button and says the sound, then runs ⟦her⟧ finger along the arrow and pushes the sounds together."}));
     const go=r=>{if(!alien)schedule(state.sounds.cards,item.v,r);advance(r)};
-    grades=[["g-auto","Read it on her own",()=>go("up")],["g-sound","With a little help",()=>go("same")],["g-help","Not yet",()=>go("reset")]];
+    grades=[["g-auto","Read it on ⟦her⟧ own",()=>go("up")],["g-sound","With a little help",()=>go("same")],["g-help","Not yet",()=>go("reset")]];
   }
   const gEl=grades.length?el("div",{class:"grades",style:"--n:"+n},grades.map(([c,t,f])=>el("button",{class:c,on:{click:f}},t))):null;
   return el("div",{class:"cardview"},
@@ -1844,7 +1844,7 @@ function cardView(){
 
 function movedOn(m){
   if(!m)return [];const out=[];
-  if(m.sounds.length)out.push(el("p",{class:"moved",text:"She's ready for new sounds!"}),el("div",{class:"chips",style:"justify-content:center"},m.sounds.map(g=>el("span",{class:"chip snd",text:gOf(g)}))));
+  if(m.sounds.length)out.push(el("p",{class:"moved",text:"⟦She⟧'s ready for new sounds!"}),el("div",{class:"chips",style:"justify-content:center"},m.sounds.map(g=>el("span",{class:"chip snd",text:gOf(g)}))));
   if(m.tricky.length)out.push(el("p",{class:"moved",text:"New tricky words to learn"}),el("div",{class:"chips",style:"justify-content:center"},m.tricky.map(w=>el("span",{class:"chip",text:w}))));
   if(m.maths)out.push(el("p",{class:"moved",text:`Maths moves on to ${stageName(m.maths)} work!`}));
   return out;
@@ -1857,10 +1857,10 @@ function doneView(){
   releaseWake();
   return el("section",{class:"panel done",style:"align-items:center;text-align:center"},
     el("p",{class:"done-title",text:`Well done${name?", "+name:""}!`}),
-    el("p",{class:"muted",text:s.ducks&&s.ducks%10===0?`Ten ducklings grew up into a duck! ${good} of ${res.length} on her own.`:`A new duckling joined the line. ${good} of ${res.length} on her own.`}),
+    el("p",{class:"muted",text:s.ducks&&s.ducks%10===0?`Ten ducklings grew up into a duck! ${good} of ${res.length} on ⟦her⟧ own.`:`A new duckling joined the line. ${good} of ${res.length} on ⟦her⟧ own.`}),
     el("div",{style:"width:100%"},ducksRow(s.ducks,true)),
     ...movedOn(session.moved),
-    look.length?el("p",{text:session.type==="tricky"?"Look for these words in tonight's reading book:":`Find these in ${state.sounds.book.title||"her reading book"}:`}):null,
+    look.length?el("p",{text:session.type==="tricky"?"Look for these words in tonight's reading book:":`Find these in ${state.sounds.book.title||"⟦her⟧ reading book"}:`}):null,
     look.length?el("div",{class:"chips",style:"justify-content:center"},look.map(w=>el("span",{class:"chip",text:w}))):null,
     session.type==="maths"?el("p",{class:"muted",text:"Real-life maths for later today"}):null,
     session.type==="maths"?el("p",{class:"mtip",text:mpick(MATHS_TIPS)}):null,
@@ -1877,8 +1877,8 @@ function soundsView(){
   wrap.append(left,right);
   left.append(el("div",{class:"summary"},
     el("div",{class:"stat"},el("b",{text:String(taughtN)}),el("span",{text:"Sounds taught"})),
-    el("div",{class:"stat"},el("b",{text:String(bankReady.length+S.book.words.filter(w=>analyse(w).ready).length)}),el("span",{text:"Words she can decode"})),
-    el("div",{class:"stat"},el("b",{text:String(secure)}),el("span",{text:"Read on her own"}))));
+    el("div",{class:"stat"},el("b",{text:String(bankReady.length+S.book.words.filter(w=>analyse(w).ready).length)}),el("span",{text:"Words ⟦she⟧ can decode"})),
+    el("div",{class:"stat"},el("b",{text:String(secure)}),el("span",{text:"Read on ⟦her⟧ own"}))));
 
   // Sound sets
   const sets=el("section",{class:"panel"},
@@ -1894,7 +1894,7 @@ function soundsView(){
       gsets=el("div",{class:"gsets"});d.append(gsets);sets.append(d)}
     const all=s.gs.every(g=>S.taught[g]);
     const toggles=el("div",{class:"gtoggles"},s.gs.map(g=>el("button",{class:"gt"+(s.stage==="Y1"?" ex":""),title:EX[g]?`as in ${EX[g]}`:g,"aria-pressed":String(!!S.taught[g]),on:{click:()=>{S.taught[g]=!S.taught[g];save();render()}}},
-      el("span",{text:gOf(g)}),s.stage==="Y1"&&EX[g]?el("small",{text:EX[g]}):null,S.auto[g]&&S.taught[g]?el("span",{class:"auto",title:"Unlocked by the app when she was ready",text:"★"}):null)));
+      el("span",{text:gOf(g)}),s.stage==="Y1"&&EX[g]?el("small",{text:EX[g]}):null,S.auto[g]&&S.taught[g]?el("span",{class:"auto",title:"Unlocked by the app when ⟦she⟧ was ready",text:"★"}):null)));
     gsets.append(el("div",{class:"gset"+(s.gs.length>6?" wide":"")},
       el("div",{class:"gset-head"},el("h3",{text:s.name}),
         el("button",{class:"linkbtn",on:{click:()=>{s.gs.forEach(g=>S.taught[g]=!all);save();render()}}},all?"Untick set":"Tick set")),
@@ -1904,7 +1904,7 @@ function soundsView(){
   cb.addEventListener("change",()=>{S.clusters=cb.checked;save();render()});
   sets.append(el("div",{class:"gset",style:"border-top:2px dashed var(--hair);padding-top:12px"},
     el("label",{class:"switch",for:"clusters"},cb,"Include words with two consonants together, such as mint, damp and train"),
-    el("p",{class:"note",text:"Little Wandle teaches these properly in the Reception summer term (Phase 4). Her reading books use some already. Untick if she finds them hard, and they will wait."})));
+    el("p",{class:"note",text:"Little Wandle teaches these properly in the Reception summer term (Phase 4). ⟦Her⟧ reading books use some already. Untick if ⟦she⟧ finds them hard, and they will wait."})));
   left.append(sets);
 
   // Next set preview
@@ -1918,26 +1918,30 @@ function soundsView(){
   }
 
   // Her reading book
-  const book=el("section",{class:"panel"},el("h2",{text:"Her reading book"}));
-  const tIn=el("input",{id:"book-title",type:"text",maxlength:"80"});tIn.value=S.book.title||"";
-  const wIn=el("textarea",{id:"book-words",spellcheck:"false"});wIn.value=S.book.words.join(", ");
+  const has=S.book.words.length>0;
+  const book=el("details",{class:"panel bookpanel"},el("summary",{},"⟦Her⟧ school book words",el("span",{class:"opt",text:has?` · ${S.book.words.length} added`:" · optional"})));
+  if(has)book.open=true;
+  const tIn=el("input",{id:"book-title",type:"text",maxlength:"80",placeholder:"e.g. Floppy's Phonics, book 3"});tIn.value=S.book.title||"";
+  const wIn=el("textarea",{id:"book-words",spellcheck:"false",placeholder:"e.g. hen, peg, bed, ten"});wIn.value=S.book.words.join(", ");
   const saveBtn=el("button",{class:"btn small",on:{click:()=>{
     S.book.title=tIn.value.trim();
     S.book.words=[...new Set(wIn.value.toLowerCase().split(/[^a-z]+/).filter(Boolean))];
     rebuildReal();save();render();
   }}},"Save book words");
-  book.append(el("div",{class:"field"},el("label",{for:"book-title",text:"Book"}),tIn),
-    el("div",{class:"field"},el("label",{for:"book-words",text:"Words listed in the book (copy from the reading notes)"}),wIn),
-    el("div",{class:"row"},saveBtn));
+  const clearBtn=has?el("button",{class:"btn ghost small",on:{click:()=>{S.book.title="";S.book.words=[];rebuildReal();save();render()}}},"Clear for a new book"):null;
+  book.append(el("p",{class:"note",text:"You don't need this. Practice already picks words from the sounds you tick. To focus on the book ⟦she⟧ brings home, add its words and up to 2 will join each session, with the end screen asking ⟦her-o⟧ to find them in the book."}),
+    el("div",{class:"field"},el("label",{for:"book-title",text:"Book title (optional)"}),tIn),
+    el("div",{class:"field"},el("label",{for:"book-words",text:"Words from the book, such as those in the reading notes"}),wIn),
+    el("div",{class:"row"},saveBtn,clearBtn));
   const list=el("div",{class:"bwords"});
   S.book.words.forEach(w=>{
     const a=analyse(w),c=S.cards[w];
-    const label=!a.ready?a.why.replace("Waiting for ","needs ").replace("Two consonants together","2 consonants").replace("Uses a spelling not in her sets","new spelling")
-      :c?(c.box>=4?"on her own":"practising"):"ready";
+    const label=!a.ready?a.why.replace("Waiting for ","needs ").replace("Two consonants together","2 consonants").replace("Uses a spelling not in ⟦her⟧ sets","new spelling")
+      :c?(c.box>=4?"on ⟦her⟧ own":"practising"):"ready";
     list.append(el("div",{class:"bw"+(a.ready?"":" wait"),title:a.why+(ORDER.includes(w)?" · also a tricky word":"")},
       el("span",{class:"w",text:w}),el("span",{class:"s",text:label})));
   });
-  book.append(list,el("p",{class:"note",text:"Words waiting for a sound stay out of practice until you tick that sound. If one comes up while she reads the book, read it to her."}));
+  if(has)book.append(list,el("p",{class:"note",text:"Words waiting for a sound stay out of practice until you tick that sound. If one comes up while ⟦she⟧ reads the book, read it to ⟦her-o⟧."}));
   right.append(book);
   return wrap;
 }
