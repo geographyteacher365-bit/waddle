@@ -275,7 +275,7 @@ details.panel summary{cursor:pointer;font:600 17px var(--font-head)}
 .empty{font-size:14px;color:var(--muted);background:var(--soft);border-radius:14px;padding:14px;text-align:center}
 @media (min-width:900px){
   .tabs{width:360px}
-  .dash{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+  .dash{grid-template-columns:repeat(3,minmax(0,1fr));align-items:stretch}
   .dash>.span-all{grid-column:1/-1}
   .dash>.span-2{grid-column:span 2}
   .summary.four{grid-template-columns:repeat(4,minmax(0,1fr))}
@@ -306,7 +306,7 @@ details.panel summary{cursor:pointer;font:600 17px var(--font-head)}
 /* Hellebore in the corner: drawn in the same sticker style as the ducks, sitting behind the cards */
 .wrap{position:relative;z-index:1}
 .hellebore{position:fixed;right:0;bottom:0;padding-right:env(safe-area-inset-right,0px);padding-bottom:env(safe-area-inset-bottom,0px);width:clamp(96px,14vw,180px);pointer-events:none;z-index:0}
-@media (max-width:899px){.hellebore{position:relative;width:120px;margin:-6px 0 0 auto;padding:0}}
+@media (max-width:899px){.hellebore{width:92px}}
 .hellebore svg{display:block;width:100%;height:auto;overflow:visible}
 .hellebore .ln{stroke:var(--duck-line);stroke-linejoin:round;stroke-linecap:round}
 .hb-sepal{fill:var(--hb-sepal);stroke:var(--duck-line);stroke-width:2;stroke-linejoin:round}
@@ -484,6 +484,50 @@ body{overflow-x:clip}
   .land-go:hover,.land-go:active,.land-go:focus-visible{animation:none}
   @keyframes gopulse{0%,100%{transform:scale(1);box-shadow:6px 6px 0 var(--shadow)}50%{transform:scale(1.05);box-shadow:8px 8px 0 var(--shadow)}}
 }
+.bookweek{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;max-width:440px}
+.bday{display:flex;flex-direction:column;align-items:center;gap:4px;font:600 12px var(--font-head);color:var(--muted)}
+.bday .bk{width:100%;max-width:46px;aspect-ratio:1;border-radius:12px;border:2px dashed var(--hair);display:grid;place-items:center;box-sizing:border-box}
+.bday .bk svg{width:62%;height:auto}
+.bday .bk-c{fill:none;stroke:var(--hair);stroke-width:1.6;stroke-linejoin:round}.bday .bk-p,.bday .bk-m{fill:none;stroke:var(--hair);stroke-width:1.4;stroke-linejoin:round}
+.bday.today .bk{border:2.5px solid var(--accent)}
+.bday.on .bk{background:var(--accent);border:2.5px solid var(--edge)}
+.bday.on .bk-c{fill:var(--card);stroke:var(--edge)}.bday.on .bk-p{stroke:var(--edge)}.bday.on .bk-m{fill:var(--duck);stroke:var(--edge)}
+.bday.on{color:var(--ink)}
+.bday.future{opacity:.5}
+.readbtn{align-self:flex-start}
+.read-badge{display:inline-flex;align-items:center;gap:8px;font:600 17px var(--font-head);color:var(--good)}
+.read-badge .tick{width:24px;height:24px;border-radius:50%;background:var(--good);color:var(--on-btn);display:inline-grid;place-items:center;font:700 14px var(--font-head)}
+@media (prefers-reduced-motion:no-preference){.bday.on.today .bk{animation:bkpop .45s ease-out}@keyframes bkpop{0%{transform:scale(.6)}70%{transform:scale(1.12)}100%{transform:scale(1)}}}
+/* Home fits one screen: smaller tiles, tighter panels */
+.home{gap:14px}
+.home .choices{gap:14px}
+.home .choice{padding:14px 10px 12px;gap:4px;border-radius:26px}
+.home .cicon{width:min(96px,46%)}
+.home .ct{font-size:clamp(22px,3.2vw,28px)}
+.home .panel{padding-top:14px;padding-bottom:14px;gap:8px}
+.home .ducks{padding:2px 4px 4px}
+.home .ducknote{font-size:14px;line-height:1.35;margin:0}
+.home .alldone{padding-top:10px;padding-bottom:10px}
+.home .alldone .big-tick{width:40px;height:40px;font-size:22px}
+.home .alldone h2{font-size:20px}
+.home .alldone p{margin:2px 0 0;font-size:14px}
+@media (max-width:600px){.home .alldone{display:none}}
+.bookpanel-home .bday .bk{max-width:36px;border-radius:10px}
+.bookpanel-home .bookweek{gap:6px}
+.readbtn{padding:10px 22px;font-size:17px}
+.undo-read{align-self:flex-start;font-size:14px;color:var(--muted);padding:2px 0}
+.rl-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:18px 26px;align-items:start}
+.rl-side,.rl-main{gap:12px}
+@media (min-width:900px){.rl-grid{grid-template-columns:minmax(0,1fr) minmax(0,1.4fr)}}
+.rl-main .linkbtn{align-self:flex-start}
+.rlog{width:100%;border-collapse:collapse;font:15px var(--font-adult)}
+.rlog th{text-align:left;font:600 14px var(--font-head);color:var(--muted);padding:4px 6px;border-bottom:2px solid var(--hair)}
+.rlog td{padding:4px 6px;border-bottom:1px solid var(--hair);vertical-align:middle}
+.rlog .rl-date{white-space:nowrap;color:var(--muted);font-size:14px;width:1%}
+.rlog input{width:100%;box-sizing:border-box;font:15px var(--font-adult);padding:6px 8px;border-radius:10px;border:2px solid transparent;background:transparent;color:var(--ink)}
+.rlog input:hover,.rlog input:focus{border-color:var(--hair);background:var(--soft)}
+.rl-del{border:0;background:none;color:var(--muted);font-size:15px;cursor:pointer;padding:4px 6px}
+.rl-add input[type=date]{font:15px var(--font-adult);padding:6px 8px;border-radius:10px;border:2px solid var(--hair);background:var(--soft);color:var(--ink)}
 .choice{position:relative}
 .choice.done{background:var(--soft);box-shadow:4px 4px 0 var(--hair);border-color:var(--hair)}
 .choice.done .cicon{filter:grayscale(1);opacity:.45}
@@ -714,13 +758,13 @@ function freshSounds(){
   const taught={};["s","a","t","p","i","n","m","d"].forEach(g=>taught[g]=true);
   return {taught,auto:{},batch:[],clusters:true,book:{title:"",words:[]},cards:{},gcards:{}};
 }
-function freshState(){return {v:1,setupDone:false,name:"",child:"girl",year:"R",term:"auto",palette:"pink",pace:{reading:"own",maths:"own"},trickyAuto:{},taught:{is:true},cards:{},days:[],log:[],reads:[],updated:0,sounds:freshSounds(),maths:freshMaths()}}
+function freshState(){return {v:1,setupDone:false,name:"",child:"girl",year:"R",term:"auto",palette:"pink",pace:{reading:"own",maths:"own"},trickyAuto:{},taught:{is:true},cards:{},days:[],log:[],reads:[],readLog:{},currentBook:"",updated:0,sounds:freshSounds(),maths:freshMaths()}}
 function migrate(s){
   if(!s.sounds)s.sounds=freshSounds();
   const S=s.sounds;S.taught=S.taught||{};S.auto=S.auto||{};S.batch=S.batch||[];S.cards=S.cards||{};S.gcards=S.gcards||{};
   if(!S.book)S.book={title:"",words:[]};S.book.words=S.book.words||[];
   if(S.clusters===undefined)S.clusters=true;
-  s.year=s.year||"R";s.pace=Object.assign({reading:"own",maths:"own"},s.pace||{});s.trickyAuto=s.trickyAuto||{};s.term=s.term||"auto";s.palette=s.palette||"pink";s.child=s.child==="boy"?"boy":"girl";
+  s.year=s.year||"R";s.pace=Object.assign({reading:"own",maths:"own"},s.pace||{});s.trickyAuto=s.trickyAuto||{};s.term=s.term||"auto";s.palette=s.palette||"pink";s.child=s.child==="boy"?"boy":"girl";s.readLog=s.readLog||{};s.currentBook=s.currentBook||"";
   if(s.setupDone===undefined)s.setupDone=!!((s.name||"").trim()||(s.days&&s.days.length)||(s.log&&s.log.length)||Object.keys(s.cards||{}).length||(s.sounds&&Object.keys(s.sounds.cards||{}).length));s.cards=s.cards||{};s.days=s.days||[];s.log=s.log||[];s.reads=s.reads||[];if(!s.maths)s.maths=freshMaths();s.maths.cards=s.maths.cards||{};if(s.maths.stage==null)s.maths.stage=-1;s.maths.settings=Object.assign(freshMaths().settings,s.maths.settings||{});s.maths.stats=s.maths.stats||{};s.taught=s.taught||{};
   return s;
 }
@@ -985,7 +1029,7 @@ function render(){
   let v;
   const key=tab==="practise"&&!session?(screen==="landing"?"landing":screen==="home"?"home":"other"):"other";
   walkNext=key==="home"&&lastScreenKey!=="home";lastScreenKey=key;
-  document.querySelector(".top").hidden=tab==="practise";
+  document.querySelector(".top").hidden=tab==="practise";document.getElementById("syncnote").hidden=tab==="practise";
   if(tab==="practise")v=!state.setupDone&&!session?setupView():session?(session.done?doneView():cardView()):screen==="landing"?landingView():startView();
   else v=Date.now()<unlockedUntil?grownView():gateView();
   view.replaceChildren(v);
@@ -1113,27 +1157,122 @@ function ducksPanel(){
   return el("section",{class:"panel pond"},
     el("div",{class:"panel-head"},el("h2",{text:(state.name||"").trim()?`${state.name.trim()}'s ducklings`:"Your ducklings"}),el("span",{class:"note streak"},s.today&&s.ducks?el("span",{class:"tick","aria-hidden":"true",text:"✓"}):null,streakNote(s))),
     row,
-    el("p",{class:"muted",text:s.ducks?`${s.ducks} so far: ${duckWords(s.ducks)}. Every finished practice hatches a duckling, and every ten ducklings grow into a duck. A missed day starts a new line.`:"Finish a reading or maths practice to hatch the first duckling. Every ten ducklings grow up into a duck."}));
+    el("p",{class:"muted ducknote",text:s.ducks?`${s.ducks} so far. Each practice hatches one, and ten grow into a duck.`:"Finish a practice to hatch the first duckling. Ten ducklings grow into a duck."}));
 }
 /* The first screen: one big button for her, a small way in for grown-ups */
+/* ================= Reading log: school book titles by date, downloadable as a PDF ================= */
+let showAllLog=false;
+const logDate=(d,year)=>{const [y,m,dd]=d.split("-").map(Number),t=new Date(y,m-1,dd);return `${t.toLocaleDateString("en-GB",{weekday:"short"})} ${t.toLocaleDateString("en-GB",{day:"numeric",month:"short"})}${year||y!==new Date().getFullYear()?" "+y:""}`};
+const longDate=d=>logDate(d,true);
+function pdfText(v){
+  const map={"‘":"'","’":"'","“":'"',"”":'"',"–":"-","—":"-","…":"..."};
+  return String(v).replace(/[‘’“”–—…]/g,c=>map[c]).replace(/[^\x20-\x7E\xA0-\xFF]/g,"?").replace(/[\\()]/g,"\\$&");
+}
+function buildPdf(pages){
+  const objs=["",""];const add=o=>{objs.push(o);return objs.length};
+  const f1=add("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>");
+  const f2=add("<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>");
+  const kids=[];
+  pages.forEach(c=>{const cs=add(`<< /Length ${c.length} >>\nstream\n${c}\nendstream`);
+    kids.push(add(`<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 ${f1} 0 R /F2 ${f2} 0 R >> >> /Contents ${cs} 0 R >>`))});
+  objs[0]="<< /Type /Catalog /Pages 2 0 R >>";
+  objs[1]=`<< /Type /Pages /Kids [${kids.map(k=>k+" 0 R").join(" ")}] /Count ${kids.length} >>`;
+  let out="%PDF-1.4\n";const offs=[];
+  objs.forEach((o,i)=>{offs.push(out.length);out+=`${i+1} 0 obj\n${o}\nendobj\n`});
+  const x=out.length;
+  out+=`xref\n0 ${objs.length+1}\n0000000000 65535 f \n`+offs.map(o=>String(o).padStart(10,"0")+" 00000 n \n").join("")+`trailer\n<< /Size ${objs.length+1} /Root 1 0 R >>\nstartxref\n${x}\n%%EOF\n`;
+  const b=new Uint8Array(out.length);for(let i=0;i<out.length;i++)b[i]=out.charCodeAt(i)&255;return b;
+}
+function readingLogPdf(){
+  const name=(state.name||"").trim();
+  const rows=[...state.reads].sort().map(d=>[longDate(d),(state.readLog[d]||"").trim()||"-"]);
+  const fit=(t,max)=>t.length>max?t.slice(0,max-3)+"...":t;
+  const L=56,R=539,C=200,H=22,pages=[];
+  const txt=(font,size,x,y,t)=>`BT /${font} ${size} Tf ${x} ${y} Td (${pdfText(t)}) Tj ET\n`;
+  let i=0,pageNo=0;
+  do{
+    pageNo++;let c="0.16 0.12 0.16 rg\n",y;
+    if(pageNo===1){
+      c+=txt("F2",20,L,770,name?`${name}'s reading log`:"Reading log");
+      c+=txt("F1",11,L,750,`School books read at home. ${rows.length} day${rows.length===1?"":"s"} recorded, printed ${new Date().toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"})}.`);
+      y=712;
+    }else y=780;
+    c+=`0.94 0.94 0.94 rg ${L} ${y-7} ${R-L} ${H} re f\n0.16 0.12 0.16 rg\n`;
+    c+=txt("F2",11,L+8,y,"Date")+txt("F2",11,C+8,y,"Book");
+    y-=H;
+    while(i<rows.length&&y>60){
+      c+=txt("F1",11,L+8,y,rows[i][0])+txt("F1",11,C+8,y,fit(rows[i][1],58));
+      c+=`0.82 0.82 0.82 RG 0.6 w ${L} ${y-7} m ${R} ${y-7} l S\n`;
+      y-=H;i++;
+    }
+    if(!rows.length)c+=txt("F1",11,L+8,y,"No school book reading recorded yet.");
+    c+="0.45 0.45 0.45 rg\n"+txt("F1",9,L,36,`Made with Waddle${pageNo>1||i<rows.length?`  ·  page ${pageNo}`:""}`).replace("·","-");
+    pages.push(c);
+  }while(i<rows.length);
+  return buildPdf(pages);
+}
+function readingLogPanel(){
+  const t=today(),msg=el("p",{class:"note","aria-live":"polite"});
+  const cur=el("input",{id:"cur-book",type:"text",maxlength:"80",placeholder:"e.g. Big Feet",autocomplete:"off"});cur.value=state.currentBook||"";
+  let tm;cur.addEventListener("input",()=>{clearTimeout(tm);tm=setTimeout(()=>{
+    state.currentBook=cur.value.trim();
+    if(state.reads.includes(t)&&!state.readLog[t])state.readLog[t]=state.currentBook;
+    save();
+  },500)});
+  const dates=[...state.reads].sort().reverse(),shown=showAllLog?dates:dates.slice(0,7);
+  const body=el("tbody",{},shown.map(d=>{
+    const inp=el("input",{type:"text",maxlength:"80",placeholder:"Add the title","aria-label":`Book read on ${longDate(d)}`});inp.value=state.readLog[d]||"";
+    inp.addEventListener("change",()=>{state.readLog[d]=inp.value.trim();save()});
+    return el("tr",{},el("td",{class:"rl-date",text:logDate(d)}),el("td",{},inp),
+      el("td",{},el("button",{class:"rl-del",type:"button","aria-label":`Remove ${longDate(d)}`,title:"Remove this day",on:{click:()=>{state.reads=state.reads.filter(x=>x!==d);delete state.readLog[d];save();render()}}},"✕")));
+  }));
+  const addDate=el("input",{type:"date",max:t,"aria-label":"Date read"});
+  const addBtn=el("button",{class:"btn ghost small",type:"button",on:{click:()=>{
+    const d=addDate.value;if(!d||d>t)return;
+    if(!state.reads.includes(d)){state.reads.push(d);state.reads.sort();state.reads=state.reads.slice(-400)}
+    if(!state.readLog[d])state.readLog[d]=(state.currentBook||"").trim();
+    save();render();
+  }}},"Add day");
+  const pdfBtn=el("button",{class:"btn small",type:"button",on:{click:async()=>{
+    const n=(state.name||"").trim().replace(/[^A-Za-z0-9]+/g,"-").replace(/^-+|-+$/g,"")||"child";
+    const r=await saveFile(`waddle-reading-log-${n}-${t}.pdf`,readingLogPdf(),"application/pdf");
+    msg.textContent=r==="saved"?"Reading log saved as a PDF.":r==="declined"?"Not saved.":"This browser couldn't save the file.";
+  }}},"Download as PDF");
+  const table=dates.length?el("table",{class:"rlog"},el("thead",{},el("tr",{},el("th",{text:"Date"}),el("th",{text:"Book"}),el("th",{}))),body)
+      :el("p",{class:"empty",text:"Days ⟦she⟧ ticks ⟦her⟧ school book will appear here."});
+  return el("section",{class:"panel span-2"},el("h2",{text:"Reading log"}),
+    el("div",{class:"rl-grid"},
+      el("div",{class:"stack rl-side"},
+        el("div",{class:"field"},el("label",{for:"cur-book",text:"Book ⟦she⟧ is reading now"}),cur,
+          el("p",{class:"note",text:"Each time ⟦she⟧ ticks ⟦her⟧ school book, this title is logged against the day. Change it when a new book comes home."})),
+        el("div",{class:"row rl-add"},el("span",{class:"note",text:"Missed a tick?"}),addDate,addBtn),
+        el("div",{class:"row"},pdfBtn),msg),
+      el("div",{class:"stack rl-main"},table,
+        dates.length>7?el("button",{class:"linkbtn",type:"button",on:{click:()=>{showAllLog=!showAllLog;render()}}},showAllLog?"Show fewer":`Show all ${dates.length} days`):null)));
+}
+
 /* ================= Backup and restore ================= */
 let restoredNote="";
 const backupName=()=>{const n=(state.name||"").trim().replace(/[^A-Za-z0-9]+/g,"-").replace(/^-+|-+$/g,"")||"child";return `waddle-${n}-${today()}.json`};
 const backupText=()=>JSON.stringify({app:"waddle",version:1,saved:new Date().toISOString(),date:today(),state});
-async function saveBackup(msg){
-  const filename=backupName(),data=backupText();
-  const done=()=>{state.lastBackup=today();save();msg.textContent=`Saved ${filename}. Keep it somewhere safe, such as iCloud, Google Drive or an email to yourself.`};
+/* Offer a file: Claude's download prompt inside claude.ai, a normal browser download everywhere else */
+async function saveFile(filename,data,mime){
   try{
     if(window.claude&&window.claude.use){
       const dl=await window.claude.use("downloads");
-      if(dl){await dl.save({filename,data});done();return}
+      if(dl){await dl.save({filename,data:data instanceof Uint8Array?new Blob([data],{type:mime}):data});return "saved"}
     }
-  }catch(e){if(e&&e.code==="declined"){msg.textContent="Backup not saved.";return}}
+  }catch(e){if(e&&e.code==="declined")return "declined"}
   try{
-    const url=URL.createObjectURL(new Blob([data],{type:"application/json"}));
+    const url=URL.createObjectURL(data instanceof Blob?data:new Blob([data],{type:mime}));
     const a=el("a",{href:url,download:filename});document.body.append(a);a.click();a.remove();
-    setTimeout(()=>URL.revokeObjectURL(url),5000);done();
-  }catch(e){msg.textContent="This browser couldn't save a file. Use the text option below instead."}
+    setTimeout(()=>URL.revokeObjectURL(url),5000);return "saved";
+  }catch(e){return "failed"}
+}
+async function saveBackup(msg){
+  const filename=backupName(),r=await saveFile(filename,backupText(),"application/json");
+  if(r==="saved"){state.lastBackup=today();save();msg.textContent=`Saved ${filename}. Keep it somewhere safe, such as iCloud, Google Drive or an email to yourself.`}
+  else msg.textContent=r==="declined"?"Backup not saved.":"This browser couldn't save a file. Use the text option below instead.";
 }
 function parseBackup(text){
   let o;try{o=JSON.parse(String(text).trim())}catch(e){return null}
@@ -1259,6 +1398,34 @@ function setupView(){
 }
 
 const grownLink=()=>el("button",{class:"linkbtn grown-inline",type:"button",on:{click:()=>{tab="grown";render()}},html:'<svg class="lock" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="7" width="11" height="7.5" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Grown-ups'});
+/* School book: the child ticks it on the home screen and sees this week fill up */
+const BOOK_SVG='<svg viewBox="0 0 24 24" aria-hidden="true"><path class="bk-c" d="M5 3.5h12.5a1.5 1.5 0 0 1 1.5 1.5v15.5H7A2 2 0 0 1 5 18.5Z"/><path class="bk-p" d="M5 18.5A2 2 0 0 1 7 16.5h12"/><path class="bk-m" d="M13 3.5v6l2-1.5 2 1.5v-6"/></svg>';
+function toggleRead(){
+  const t=today();
+  if(state.reads.includes(t)){state.reads=state.reads.filter(d=>d!==t);delete state.readLog[t]}
+  else{state.reads.push(t);state.reads=state.reads.slice(-400);state.readLog[t]=(state.currentBook||"").trim()}
+  save();render();
+}
+function bookPanel(){
+  const t=today(),reads=new Set(state.reads),now=new Date();
+  const mon=addDays(t,-((now.getDay()+6)%7));
+  const week=[0,1,2,3,4,5,6].map(i=>addDays(mon,i));
+  const n=week.filter(d=>reads.has(d)).length,readToday=reads.has(t);
+  const row=el("div",{class:"bookweek",role:"img","aria-label":`School book read on ${n} day${n===1?"":"s"} this week`},
+    week.map(d=>{const [y,m,dd]=d.split("-").map(Number);
+      return el("div",{class:"bday"+(reads.has(d)?" on":"")+(d===t?" today":"")+(d>t?" future":"")},
+        el("span",{class:"bk",html:BOOK_SVG}),
+        el("span",{text:new Date(y,m-1,dd).toLocaleDateString("en-GB",{weekday:"narrow"})}))}));
+  const status=readToday
+    ?el("span",{class:"note streak"},el("span",{class:"tick","aria-hidden":"true",text:"✓"}),"Read today")
+    :el("span",{class:"note",text:n?`${n} day${n===1?"":"s"} this week`:"Not read yet this week"});
+  return el("section",{class:"panel bookpanel-home"},
+    el("div",{class:"panel-head"},el("h2",{text:"School book"}),status),
+    row,
+    readToday
+      ?el("button",{class:"linkbtn undo-read",type:"button",on:{click:toggleRead}},"Undo today's tick")
+      :el("button",{class:"btn readbtn",type:"button",on:{click:toggleRead}},"I've read my book today"));
+}
 function landingView(){
   const name=(state.name||"").trim(),s=streak();
   return el("section",{class:"landing"},
@@ -1287,7 +1454,7 @@ function startView(){
       el("div",{class:"choices"},soundsTile,trickyTile));
   }
   const mq=planMaths();
-  return el("div",{class:"stack"},
+  return el("div",{class:"stack home"},
     el("div",{class:"row"},el("button",{class:"btn ghost small",on:{click:()=>{screen="landing";render()}}},"‹ Home"),grownLink()),
     readingDone()&&mathsDone()?el("section",{class:"panel alldone"},el("span",{class:"big-tick","aria-hidden":"true",text:"✓"}),
       el("div",{},el("h2",{text:"All done for today!"}),el("p",{class:"muted",text:"Reading and maths are finished. Come back tomorrow for more ducklings."}))):null,
@@ -1295,7 +1462,7 @@ function startView(){
       choiceTile({icon:"book",title:"Reading",note:"Sounds, words and tricky words",onClick:()=>{screen="reading";render()},done:readingDone()}),
       mq.length?choiceTile({icon:"dice",title:"Maths",note:"Quick looks, counting and more · 4 min",onClick:()=>begin("maths",mq),done:mathsDone()})
                :choiceTile({icon:"dice",title:"Maths",note:"Turn on an activity in Grown-ups first",disabled:true})),
-    ducksPanel());
+    bookPanel(),ducksPanel());
 }
 
 /* ----- Progress dashboard (grown-ups only) ----- */
@@ -1336,7 +1503,7 @@ function progressView(){
   const scored=state.log.filter(e=>e.n&&e.t!=="maths");
   const thisWeek=scored.filter(e=>weekStart(e.d)===weekStart(t));
   const al=state.log.filter(e=>e.an).slice(-20);
-  const wrap=el("div",{class:"dash"}),left=el("div",{class:"dcol span-2"}),right=el("div",{class:"dcol"});
+  const wrap=el("div",{class:"dash"});
 
   wrap.append(el("div",{class:"summary four span-all"},
     tile(`${pDays}/14`,"Days practised","last two weeks"),
@@ -1352,7 +1519,7 @@ function progressView(){
     el("p",{class:"note",text:"Share of sound and word cards ⟦she⟧ managed without help. A dip in the week new sounds arrive is normal and healthy."}));
   if(data.some(d=>d.p!=null))chartPanel.append(el("div",{style:"overflow-x:auto"},weeklyChart(data)));
   else chartPanel.append(el("p",{class:"empty",text:"This fills in as ⟦she⟧ finishes sessions. Each bar will show one week."}));
-  wrap.append(left,right);left.append(chartPanel);
+  chartPanel.classList.add("span-2");
 
   // Last 14 days and the school book
   const readToday=reads.has(t);
@@ -1364,12 +1531,10 @@ function progressView(){
   });
   const secs=state.log.filter(e=>e.s).slice(-10).map(e=>e.s).sort((a,b)=>a-b);
   const med=secs.length?secs[Math.floor(secs.length/2)]:0,mins=Math.max(1,Math.round(med/60));
-  right.append(el("section",{class:"panel"},el("h2",{text:"Last 14 days"}),strip,
+  const last14Panel=el("section",{class:"panel"},el("h2",{text:"Last 14 days"}),strip,
     el("div",{class:"legend"},el("span",{},el("span",{class:"mk p on"}),"Practice"),el("span",{},el("span",{class:"mk r on"}),"School book")),
-    el("button",{class:"btn small"+(readToday?"":" ghost"),"aria-pressed":String(readToday),on:{click:()=>{
-      if(readToday)state.reads=state.reads.filter(d=>d!==t);else{state.reads.push(t);state.reads=state.reads.slice(-400)}save();render()}}},
-      readToday?"✓ School book read today":"Tick: read ⟦her⟧ school book today"),
-    med?el("p",{class:"note",text:`Sessions usually take about ${mins} minute${mins>1?"s":""}.`}):null));
+    el("p",{class:"note",text:readToday?"School book read today. ⟦She⟧ ticks it on ⟦her⟧ home screen.":"⟦She⟧ ticks the school book on ⟦her⟧ home screen after reading it."}),
+    med?el("p",{class:"note",text:`Sessions usually take about ${mins} minute${mins>1?"s":""}.`}):null);
 
   // Sounds
   const taughtG=ALL_G.filter(g=>S.taught[g]);
@@ -1382,7 +1547,7 @@ function progressView(){
       return el("span",{class:"gs "+st,title:`${gOf(g)}${EX[g]?" as in "+EX[g]:""}: ${LABEL[st]}`},gOf(g),g.includes(":")?el("small",{text:EX[g]}):null,st==="secure"?el("span",{class:"ic",text:"✓"}):st==="help"?el("span",{class:"ic",text:"!"}):null)})));
     soundsPanel.append(el("div",{class:"legend"},Object.keys(LABEL).map(k=>el("span",{},el("span",{class:"sw "+k}),`${LABEL[k]} (${counts[k]})`))));
   }else soundsPanel.append(el("p",{class:"empty",text:"Tick the sounds ⟦she⟧ has been taught under Sounds."}));
-  left.append(soundsPanel,mathsProgressPanel());right.prepend(pacePanel());
+  const numbersPanel=mathsProgressPanel(),pace=pacePanel();
 
   // Worth mentioning to her teacher
   const stuck=(map)=>Object.entries(map).filter(([k,c])=>c.reps>=3&&c.box<=1).map(([k])=>k);
@@ -1392,22 +1557,25 @@ function progressView(){
   if(flags.length)teacher.append(el("p",{class:"note",text:"Still 'Not yet' after three or more tries:"}),
     el("div",{class:"chips"},flags.map(f=>el("span",{class:"chip",title:f.k},f.v,el("span",{class:"tag",text:f.k})))));
   else teacher.append(el("p",{class:"muted",text:"Nothing stands out. Anything still marked 'Not yet' after three tries will appear here."}));
-  right.append(teacher);
 
   // Words
   const decodable=BANK.filter(w=>!S.book.words.includes(w)&&analyse(w).ready).length+S.book.words.filter(w=>analyse(w).ready).length;
   const ownW=Object.values(S.cards).filter(c=>c.box>=4).length;
   const tTaught=taughtTricky(),tSecure=tTaught.filter(w=>trickyStatus(w)==="secure").length;
   const helpWords=[...Object.entries(S.cards).filter(([w,c])=>c.last==="reset").map(([w])=>w),...tTaught.filter(w=>state.cards[w]&&state.cards[w].last==="reset")];
-  right.append(el("section",{class:"panel"},el("h2",{text:"Words"}),
+  const wordsPanel=el("section",{class:"panel"},el("h2",{text:"Words"}),
     el("div",{class:"minis"},
       el("div",{class:"mini"},el("b",{text:String(decodable)}),el("span",{text:"Words ⟦she⟧ can decode with ⟦her⟧ sounds"})),
       el("div",{class:"mini"},el("b",{text:String(ownW)}),el("span",{text:"Words ⟦she⟧ reads on ⟦her⟧ own"})),
       el("div",{class:"mini"},el("b",{text:`${tSecure}/${tTaught.length}`}),el("span",{text:"Tricky words on sight"}))),
     helpWords.length?el("p",{class:"note",text:"Needed help last time. These come back tomorrow:"}):el("p",{class:"note",text:"No words needed help last time."}),
-    helpWords.length?el("div",{class:"chips"},helpWords.map(w=>el("span",{class:"chip",text:w}))):null));
+    helpWords.length?el("div",{class:"chips"},helpWords.map(w=>el("span",{class:"chip",text:w}))):null);
 
-    return wrap;
+  /* Rows by topic: reading results, what she knows and what's next, then the school book */
+  wrap.append(chartPanel,el("div",{class:"dcol"},teacher,wordsPanel),
+    el("div",{class:"dcol span-2"},soundsPanel,numbersPanel),pace,
+    readingLogPanel(),last14Panel);
+  return wrap;
 }
 
 /* ================= Maths: Mastering Number, Reception to end of Year 1 ================= */
@@ -1884,7 +2052,7 @@ function settingsPanel(){
   const confirmBox=el("div",{class:"confirm"});
   const resetBtn=el("button",{class:"btn ghost small",on:{click:()=>{
     confirmBox.replaceChildren(el("span",{class:"note",text:"Clear all practice and reading history? Ticked sounds, words and ⟦her⟧ book list stay."}),
-      el("button",{class:"btn small danger",on:{click:()=>{state.cards={};state.days=[];state.log=[];state.reads=[];state.maths.stats={};state.sounds.cards={};state.sounds.gcards={};save();render()}}},"Clear history"),
+      el("button",{class:"btn small danger",on:{click:()=>{state.cards={};state.days=[];state.log=[];state.reads=[];state.readLog={};state.maths.stats={};state.sounds.cards={};state.sounds.gcards={};save();render()}}},"Clear history"),
       el("button",{class:"btn ghost small",on:{click:()=>confirmBox.replaceChildren(resetBtn)}},"Cancel"));
   }}},"Reset progress…");
   confirmBox.append(resetBtn);
