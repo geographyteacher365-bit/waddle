@@ -170,6 +170,17 @@ button.g{cursor:pointer;-webkit-tap-highlight-color:transparent}
 .field label{font:600 15px var(--font-head)}
 .field input,.field textarea{font:16px var(--font-adult);padding:10px 12px;border-radius:14px;border:3px solid var(--hair);background:var(--soft);color:var(--ink);width:100%;box-sizing:border-box}
 .field textarea{min-height:84px;resize:vertical}
+.field select{font:16px var(--font-adult);padding:10px 12px;border-radius:14px;border:3px solid var(--hair);background:var(--soft);color:var(--ink);width:100%;box-sizing:border-box}
+.setup{max-width:560px;margin:0 auto;gap:18px}
+.setup .brand{display:flex;flex-direction:column;gap:4px}
+.setup .brand b{font:600 26px/1 var(--font-head);color:var(--accent)}
+.setup h1{font:600 clamp(28px,6vw,36px)/1.1 var(--font-head);margin:6px 0 0}
+.setup .go{align-self:flex-start;font-size:20px;padding:14px 36px}
+.tipbox{background:var(--soft);border-radius:16px;padding:12px 14px;font:15px/1.45 var(--font-adult);color:var(--ink)}
+.restorebox:empty{display:none}
+.restorebox{background:var(--soft);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.textbackup summary{cursor:pointer;font:600 15px var(--font-head);color:var(--muted)}
+.textbackup[open]{display:flex;flex-direction:column;gap:10px}
 .note{font-size:13px;color:var(--muted)}
 .confirm{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .btn.danger{background:var(--help);color:var(--on-btn)}
@@ -379,10 +390,10 @@ details.panel summary{cursor:pointer;font:600 17px var(--font-head)}
 .tblock summary{cursor:pointer;font:600 17px var(--font-head)}
 .tblock .linkbtn{margin:6px 0}
 /* Colour themes: pink (default), blue and green, each with a dark version */
-:root[data-palette="blue"]{--bg:#D6E7FA; --dots:#C2DAF5; --card:#FFFFFF; --soft:#EEF5FD; --ink:#132A4C; --muted:#4A6386; --edge:#132A4C; --shadow:#132A4C; --hair:#C5D8EE; --accent:#2D6CD2; --on-accent:#FFFFFF; --duck-line:#132A4C; --bow:#2D6CD2; --hb-sepal:#9C8AE0; --hb-speck:#4B3A9C; --hb-vein:#6E5CC4}
+:root[data-palette="blue"]{--bg:#D6E7FA; --dots:#C2DAF5; --card:#FFFFFF; --soft:#EEF5FD; --ink:#1A1C24; --muted:#4A6386; --edge:#132A4C; --shadow:#132A4C; --hair:#C5D8EE; --accent:#2D6CD2; --on-accent:#FFFFFF; --duck-line:#132A4C; --bow:#2D6CD2; --hb-sepal:#9C8AE0; --hb-speck:#4B3A9C; --hb-vein:#6E5CC4}
 @media (prefers-color-scheme: dark){:root[data-palette="blue"]:not([data-theme="light"]){--bg:#0D192C; --dots:#13233A; --card:#172A45; --soft:#1F3657; --ink:#E6F0FF; --muted:#A9BFDE; --edge:#8DB8F5; --shadow:#04090F; --hair:#2B4467; --accent:#6FA5FF; --on-accent:#0D192C; --bow:#6FA5FF; color-scheme:dark}}
 :root[data-palette="blue"][data-theme="dark"]{--bg:#0D192C; --dots:#13233A; --card:#172A45; --soft:#1F3657; --ink:#E6F0FF; --muted:#A9BFDE; --edge:#8DB8F5; --shadow:#04090F; --hair:#2B4467; --accent:#6FA5FF; --on-accent:#0D192C; --bow:#6FA5FF; color-scheme:dark}
-:root[data-palette="green"]{--bg:#D4ECDB; --dots:#C0E2CA; --card:#FFFFFF; --soft:#EDF8F0; --ink:#163A26; --muted:#4A6B57; --edge:#163A26; --shadow:#163A26; --hair:#C1DECA; --accent:#2B8752; --on-accent:#FFFFFF; --duck-line:#163A26; --bow:#2B8752; --hb-sepal:#F6F3E6; --hb-speck:#9B4F6E; --hb-vein:#A9C791}
+:root[data-palette="green"]{--bg:#D4ECDB; --dots:#C0E2CA; --card:#FFFFFF; --soft:#EDF8F0; --ink:#1A1D1B; --muted:#4A6B57; --edge:#163A26; --shadow:#163A26; --hair:#C1DECA; --accent:#2B8752; --on-accent:#FFFFFF; --duck-line:#163A26; --bow:#2B8752; --hb-sepal:#F6F3E6; --hb-speck:#9B4F6E; --hb-vein:#A9C791}
 @media (prefers-color-scheme: dark){:root[data-palette="green"]:not([data-theme="light"]){--bg:#0E2117; --dots:#13291D; --card:#183224; --soft:#204230; --ink:#E4F5EA; --muted:#A7CBB4; --edge:#8FD3A8; --shadow:#050F09; --hair:#2C5340; --accent:#5CC98A; --on-accent:#0E2117; --bow:#5CC98A; color-scheme:dark}}
 :root[data-palette="green"][data-theme="dark"]{--bg:#0E2117; --dots:#13291D; --card:#183224; --soft:#204230; --ink:#E4F5EA; --muted:#A7CBB4; --edge:#8FD3A8; --shadow:#050F09; --hair:#2C5340; --accent:#5CC98A; --on-accent:#0E2117; --bow:#5CC98A; color-scheme:dark}
 .swatch{width:14px;height:14px;border-radius:50%;display:inline-block;margin-right:6px;vertical-align:-2px;border:2px solid currentColor}
@@ -451,9 +462,13 @@ body{overflow-x:clip}
 .top[hidden]{display:none!important}
 .landing{position:relative;min-height:min(78vh,680px);display:flex;flex-direction:column;align-items:center;justify-content:center}
 .grown-link{position:absolute;top:0;right:0;display:inline-flex;align-items:center;gap:6px;font-size:15px;color:var(--muted);padding:8px 4px}
-.grown-link .lock{width:14px;height:14px}
+.grown-link .lock,.grown-inline .lock{width:14px;height:14px}
+.grown-inline{margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:15px;color:var(--muted);padding:8px 4px}
 .childrow{display:flex;flex-wrap:wrap;gap:16px 28px;align-items:flex-end}.childrow>.field{flex:1 1 200px}
-.land-brand{position:absolute;top:0;left:0;padding:6px 4px;font:600 24px/1 var(--font-head);color:var(--accent);letter-spacing:.01em}
+.land-brand{position:absolute;top:0;left:0;padding:6px 4px;display:flex;flex-direction:column;gap:5px}
+.land-name-brand{font:600 24px/1 var(--font-head);color:var(--accent);letter-spacing:.01em}
+.land-tag{font:400 14px/1.3 var(--font-adult);color:var(--muted);white-space:nowrap}
+@media (max-width:420px){.land-tag{font-size:12.5px}}
 .land-main{display:flex;flex-direction:column;align-items:center;gap:22px;text-align:center}
 .land-duck{width:min(190px,46vw);display:block}
 .land-duck svg{width:100%;height:auto;display:block;overflow:visible}
@@ -699,13 +714,14 @@ function freshSounds(){
   const taught={};["s","a","t","p","i","n","m","d"].forEach(g=>taught[g]=true);
   return {taught,auto:{},batch:[],clusters:true,book:{title:"",words:[]},cards:{},gcards:{}};
 }
-function freshState(){return {v:1,name:"",child:"girl",year:"R",term:"auto",palette:"pink",pace:{reading:"own",maths:"own"},trickyAuto:{},taught:{is:true},cards:{},days:[],log:[],reads:[],updated:0,sounds:freshSounds(),maths:freshMaths()}}
+function freshState(){return {v:1,setupDone:false,name:"",child:"girl",year:"R",term:"auto",palette:"pink",pace:{reading:"own",maths:"own"},trickyAuto:{},taught:{is:true},cards:{},days:[],log:[],reads:[],updated:0,sounds:freshSounds(),maths:freshMaths()}}
 function migrate(s){
   if(!s.sounds)s.sounds=freshSounds();
   const S=s.sounds;S.taught=S.taught||{};S.auto=S.auto||{};S.batch=S.batch||[];S.cards=S.cards||{};S.gcards=S.gcards||{};
   if(!S.book)S.book={title:"",words:[]};S.book.words=S.book.words||[];
   if(S.clusters===undefined)S.clusters=true;
-  s.year=s.year||"R";s.pace=Object.assign({reading:"own",maths:"own"},s.pace||{});s.trickyAuto=s.trickyAuto||{};s.term=s.term||"auto";s.palette=s.palette||"pink";s.child=s.child==="boy"?"boy":"girl";s.cards=s.cards||{};s.days=s.days||[];s.log=s.log||[];s.reads=s.reads||[];if(!s.maths)s.maths=freshMaths();s.maths.cards=s.maths.cards||{};if(s.maths.stage==null)s.maths.stage=-1;s.maths.settings=Object.assign(freshMaths().settings,s.maths.settings||{});s.maths.stats=s.maths.stats||{};s.taught=s.taught||{};
+  s.year=s.year||"R";s.pace=Object.assign({reading:"own",maths:"own"},s.pace||{});s.trickyAuto=s.trickyAuto||{};s.term=s.term||"auto";s.palette=s.palette||"pink";s.child=s.child==="boy"?"boy":"girl";
+  if(s.setupDone===undefined)s.setupDone=!!((s.name||"").trim()||(s.days&&s.days.length)||(s.log&&s.log.length)||Object.keys(s.cards||{}).length||(s.sounds&&Object.keys(s.sounds.cards||{}).length));s.cards=s.cards||{};s.days=s.days||[];s.log=s.log||[];s.reads=s.reads||[];if(!s.maths)s.maths=freshMaths();s.maths.cards=s.maths.cards||{};if(s.maths.stage==null)s.maths.stage=-1;s.maths.settings=Object.assign(freshMaths().settings,s.maths.settings||{});s.maths.stats=s.maths.stats||{};s.taught=s.taught||{};
   return s;
 }
 let state=freshState();
@@ -969,8 +985,8 @@ function render(){
   let v;
   const key=tab==="practise"&&!session?(screen==="landing"?"landing":screen==="home"?"home":"other"):"other";
   walkNext=key==="home"&&lastScreenKey!=="home";lastScreenKey=key;
-  document.querySelector(".top").hidden=key==="landing";
-  if(tab==="practise")v=session?(session.done?doneView():cardView()):screen==="landing"?landingView():startView();
+  document.querySelector(".top").hidden=tab==="practise";
+  if(tab==="practise")v=!state.setupDone&&!session?setupView():session?(session.done?doneView():cardView()):screen==="landing"?landingView():startView();
   else v=Date.now()<unlockedUntil?grownView():gateView();
   view.replaceChildren(v);
 }
@@ -1095,15 +1111,158 @@ function ducksPanel(){
   const s=streak(),row=ducksRow(s.ducks);
   if(walkNext&&s.ducks)walkIn(row);
   return el("section",{class:"panel pond"},
-    el("div",{class:"panel-head"},el("h2",{text:"The duckling line"}),el("span",{class:"note streak"},s.today&&s.ducks?el("span",{class:"tick","aria-hidden":"true",text:"✓"}):null,streakNote(s))),
+    el("div",{class:"panel-head"},el("h2",{text:(state.name||"").trim()?`${state.name.trim()}'s ducklings`:"Your ducklings"}),el("span",{class:"note streak"},s.today&&s.ducks?el("span",{class:"tick","aria-hidden":"true",text:"✓"}):null,streakNote(s))),
     row,
     el("p",{class:"muted",text:s.ducks?`${s.ducks} so far: ${duckWords(s.ducks)}. Every finished practice hatches a duckling, and every ten ducklings grow into a duck. A missed day starts a new line.`:"Finish a reading or maths practice to hatch the first duckling. Every ten ducklings grow up into a duck."}));
 }
 /* The first screen: one big button for her, a small way in for grown-ups */
+/* ================= Backup and restore ================= */
+let restoredNote="";
+const backupName=()=>{const n=(state.name||"").trim().replace(/[^A-Za-z0-9]+/g,"-").replace(/^-+|-+$/g,"")||"child";return `waddle-${n}-${today()}.json`};
+const backupText=()=>JSON.stringify({app:"waddle",version:1,saved:new Date().toISOString(),date:today(),state});
+async function saveBackup(msg){
+  const filename=backupName(),data=backupText();
+  const done=()=>{state.lastBackup=today();save();msg.textContent=`Saved ${filename}. Keep it somewhere safe, such as iCloud, Google Drive or an email to yourself.`};
+  try{
+    if(window.claude&&window.claude.use){
+      const dl=await window.claude.use("downloads");
+      if(dl){await dl.save({filename,data});done();return}
+    }
+  }catch(e){if(e&&e.code==="declined"){msg.textContent="Backup not saved.";return}}
+  try{
+    const url=URL.createObjectURL(new Blob([data],{type:"application/json"}));
+    const a=el("a",{href:url,download:filename});document.body.append(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),5000);done();
+  }catch(e){msg.textContent="This browser couldn't save a file. Use the text option below instead."}
+}
+function parseBackup(text){
+  let o;try{o=JSON.parse(String(text).trim())}catch(e){return null}
+  const st=o&&o.app==="waddle"&&o.state?o.state:o;
+  if(!st||st.v!==1||!st.sounds||typeof st.sounds!=="object")return null;
+  return {state:st,saved:o&&(o.date||o.saved)?String(o.date||o.saved).slice(0,10):null};
+}
+function restorePrompt(box,text){
+  const b=parseBackup(text);
+  if(!b){box.replaceChildren(el("p",{class:"note",text:"That doesn't look like a Waddle backup, so nothing has changed."}));return}
+  const st=b.state,ticked=Object.values((st.sounds&&st.sounds.taught)||{}).filter(Boolean).length,days=(st.days||[]).length;
+  const who=(st.name||"").trim()||"your child";
+  box.replaceChildren(
+    el("p",{text:`Backup of ${who}${b.saved?` from ${niceDate(b.saved)}`:""}, with ${ticked} sound${ticked===1?"":"s"} ticked and ${days} day${days===1?"":"s"} of practice. Replace the progress on this device with it?`}),
+    el("div",{class:"row"},
+      el("button",{class:"btn small danger",type:"button",on:{click:()=>{
+        state=migrate(JSON.parse(JSON.stringify(st)));state.setupDone=true;rebuildReal();save();
+        session=null;restoredNote=`Progress restored from the backup of ${who}.`;
+        if(tab==="practise")screen="landing";render();
+      }}},"Replace progress"),
+      el("button",{class:"btn ghost small",type:"button",on:{click:()=>box.replaceChildren()}},"Cancel")));
+}
+function restoreControls(box){
+  const fileIn=el("input",{type:"file",accept:".json,application/json,text/plain",hidden:""});
+  fileIn.addEventListener("change",async()=>{
+    const f=fileIn.files&&fileIn.files[0];if(!f)return;
+    let t="";try{t=await f.text()}catch(e){}
+    fileIn.value="";restorePrompt(box,t);
+  });
+  return fileIn;
+}
+function backupPanel(){
+  const msg=el("p",{class:"note","aria-live":"polite",text:restoredNote});restoredNote="";
+  const box=el("div",{class:"restorebox"});
+  const fileIn=restoreControls(box);
+  const out=el("textarea",{readonly:"",rows:"3",spellcheck:"false","aria-label":"Backup as text"});
+  const outWrap=el("div",{class:"field",hidden:""},out);
+  const copyMsg=el("span",{class:"note","aria-live":"polite"});
+  const copyBtn=el("button",{class:"btn ghost small",type:"button",on:{click:()=>{
+    const t=backupText();out.value=t;outWrap.hidden=false;out.select();
+    try{navigator.clipboard.writeText(t).then(()=>{copyMsg.textContent="Copied. Paste it into a note or a message to yourself.";state.lastBackup=today();save()},()=>{copyMsg.textContent="Selected. Copy it from the box."})}catch(e){copyMsg.textContent="Selected. Copy it from the box."}
+  }}},"Copy as text");
+  const pasteIn=el("textarea",{rows:"3",spellcheck:"false",placeholder:"Paste a backup here","aria-label":"Paste a backup"});
+  const pasteBtn=el("button",{class:"btn ghost small",type:"button",on:{click:()=>restorePrompt(box,pasteIn.value)}},"Restore from text");
+  const inClaude=!!remote;
+  const last=state.lastBackup?`Last backup ${niceDate(state.lastBackup)}.`:"No backup saved yet.";
+  return el("section",{class:"panel"},el("h2",{text:"Backup"}),
+    el("p",{class:"note",text:(inClaude
+      ?"Progress here is saved to your account. A backup lets you move it to the Waddle website or keep a copy. "
+      :"Progress lives in this browser only. Save a backup every few weeks and before changing phone. ")+last}),
+    el("div",{class:"row"},
+      el("button",{class:"btn small",type:"button",on:{click:()=>saveBackup(msg)}},"Save a backup"),
+      el("button",{class:"btn ghost small",type:"button",on:{click:()=>fileIn.click()}},"Restore from backup"),fileIn),
+    msg,box,
+    el("details",{class:"textbackup"},el("summary",{},"No files? Use text instead"),
+      el("div",{class:"row"},copyBtn,copyMsg),outWrap,
+      el("div",{class:"field"},pasteIn),el("div",{class:"row"},pasteBtn)));
+}
+
+/* ================= First visit: a one-page setup for a grown-up ================= */
+const TERM_ORDER=["Reception autumn","Reception spring","Reception summer","Year 1 autumn","Year 1 spring","Year 1 summer"];
+const defaultSet=(year,term)=>({"R-autumn":0,"R-spring":8,"R-summer":12,"Y1-autumn":12,"Y1-spring":14,"Y1-summer":16})[`${year}-${term}`]??0;
+function applySetup(d){
+  state.name=d.name.trim();state.child=d.child;state.year=d.year;state.term="auto";state.palette=d.palette;
+  const S=state.sounds;S.taught={};S.auto={};S.batch=[];S.clusters=true;
+  if(d.set>=0)SETS.slice(0,d.set+1).forEach(x=>x.gs.forEach(g=>S.taught[g]=true));
+  state.taught={};
+  const cur=TERM_ORDER.indexOf(`${yearName()} ${curTerm()}`);
+  ORDER.forEach(w=>{const t=WORDS[w].term,i=TERM_ORDER.indexOf(t);if(i>=0&&i<cur&&trickyTermReady(t))state.taught[w]=true});
+  if(!Object.keys(state.taught).length&&d.set>=0){
+    const first=ORDER.find(w=>WORDS[w].term===TERM_ORDER[cur]&&trickyTermReady(WORDS[w].term));
+    if(first)state.taught[first]=true;
+  }
+  state.setupDone=true;MS().settings.planKey=null;
+  rebuildReal();save();screen="landing";render();
+}
+function setupView(){
+  const d={name:"",child:"girl",year:"R",palette:state.palette||"pink",set:null};
+  const nameIn=el("input",{id:"setup-name",type:"text",maxlength:"24",placeholder:"e.g. Ruby",autocomplete:"off"});
+  const segRow=(label,id,opts,key,after)=>{
+    const btns=opts.map(([v,t,sw])=>{const b=el("button",{type:"button","aria-pressed":String(d[key]===v)},sw?el("span",{class:"swatch "+v}):null,t);
+      b.addEventListener("click",()=>{d[key]=v;btns.forEach((x,i)=>x.setAttribute("aria-pressed",String(opts[i][0]===v)));if(after)after()});return b});
+    return el("div",{class:"field"},el("span",{class:"flabel",id,text:label}),el("div",{class:"seg","aria-labelledby":id},btns));
+  };
+  const sel=el("select",{id:"setup-set"});
+  const fillSets=()=>{
+    const pick=d.set!=null&&(d.year==="Y1"||SETS[d.set]?.stage!=="Y1")?d.set:defaultSet(d.year,curTerm());
+    sel.replaceChildren(el("option",{value:"-1",text:"Not started phonics yet"}));
+    let group=null;
+    SETS.forEach((x,i)=>{
+      if(x.stage==="Y1"&&d.year!=="Y1")return;
+      if(x.phase||!group){group=el("optgroup",{label:x.phase||""});sel.append(group)}
+      const gs=x.gs.slice(0,7).map(gOf).join(" ")+(x.gs.length>7?" …":"");
+      group.append(el("option",{value:String(i),text:`${x.name} · ${gs}`}));
+    });
+    sel.value=String(pick);
+  };
+  sel.addEventListener("change",()=>{d.set=+sel.value});
+  fillSets();
+  const box=el("div",{class:"restorebox"});
+  const fileIn=restoreControls(box);
+  const standalone=(window.matchMedia&&matchMedia("(display-mode: standalone)").matches)||navigator.standalone===true;
+  const ios=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==="MacIntel"&&navigator.maxTouchPoints>1);
+  const android=/Android/.test(navigator.userAgent);
+  const tip=window.claude||standalone?null
+    :ios?"On iPhone or iPad, tap Share, then Add to Home Screen. Safari clears websites that haven't been opened for 7 days, but it keeps Home Screen apps, so this protects your child's progress."
+    :android?"On Android, tap the ⋮ menu in Chrome, then Add to Home screen, so Waddle opens like an app."
+    :null;
+  return el("section",{class:"panel stack setup"},
+    el("div",{class:"brand"},el("b",{text:"Waddle"}),el("span",{class:"note",text:"Daily reading and maths recap"})),
+    el("h1",{text:"Let's set up Waddle"}),
+    el("p",{class:"note",text:"For a grown-up, once. It takes about a minute, and you can change everything later in Grown-ups."}),
+    el("div",{class:"field"},el("label",{for:"setup-name",text:"Child's name"}),nameIn),
+    segRow("Boy or girl","su-child",[["girl","Girl"],["boy","Boy"]],"child"),
+    segRow("School year","su-year",[["R","Reception"],["Y1","Year 1"]],"year",fillSets),
+    el("div",{class:"field"},el("label",{for:"setup-set",text:"Latest sounds taught at school"}),sel,
+      el("p",{class:"note",text:"Every sound up to and including this set is ticked, plus the tricky words from earlier terms. The reading record or the school's phonics letter will say where they are. You can fine-tune both on the Sounds and Tricky words pages."})),
+    segRow("Colour","su-pal",[["pink","Pink",true],["blue","Blue",true],["green","Green",true]],"palette",()=>document.documentElement.setAttribute("data-palette",d.palette)),
+    tip?el("p",{class:"tipbox",text:tip}):null,
+    el("button",{class:"btn go",type:"button",on:{click:()=>{d.name=nameIn.value;d.set=+sel.value;applySetup(d)}}},"Start"),
+    el("p",{class:"note"},"Moving from another phone? ",el("button",{class:"linkbtn",type:"button",on:{click:()=>fileIn.click()}},"Restore a backup"),fileIn),
+    box);
+}
+
+const grownLink=()=>el("button",{class:"linkbtn grown-inline",type:"button",on:{click:()=>{tab="grown";render()}},html:'<svg class="lock" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="7" width="11" height="7.5" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Grown-ups'});
 function landingView(){
   const name=(state.name||"").trim(),s=streak();
   return el("section",{class:"landing"},
-    el("span",{class:"land-brand",text:"Waddle"}),
+    el("div",{class:"land-brand"},el("span",{class:"land-name-brand",text:"Waddle"}),el("span",{class:"land-tag",text:"Daily reading and maths recap"})),
     el("button",{class:"linkbtn grown-link",type:"button",on:{click:()=>{tab="grown";render()}},html:'<svg class="lock" viewBox="0 0 16 16" aria-hidden="true"><rect x="2.5" y="7" width="11" height="7.5" rx="2" fill="currentColor"/><path d="M5 7V5a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Grown-ups'}),
     el("div",{class:"land-main"},
       el("span",{class:"land-duck",html:DUCK_SVG(true)}),
@@ -1124,12 +1283,12 @@ function startView(){
         ?choiceTile({icon:"tricky",title:"Tricky words",note:`${tp.queue.length} word${tp.queue.length>1?"s":""} · 2 min`,onClick:()=>begin("tricky",tp.queue),done:doneToday("tricky")})
         :choiceTile({icon:"tricky",title:"Tricky words",note:"All caught up · extra practice",onClick:()=>begin("tricky",shuffle(tt).slice(0,5).map(v=>({kind:"t",v}))),done:true});
     return el("div",{class:"stack"},
-      el("div",{class:"row"},el("button",{class:"btn ghost small",on:{click:()=>{screen="home";render()}}},"‹ Back"),el("h2",{class:"screen-title",text:"Reading"})),
+      el("div",{class:"row"},el("button",{class:"btn ghost small",on:{click:()=>{screen="home";render()}}},"‹ Back"),el("h2",{class:"screen-title",text:"Reading"}),grownLink()),
       el("div",{class:"choices"},soundsTile,trickyTile));
   }
   const mq=planMaths();
   return el("div",{class:"stack"},
-    el("div",{class:"row"},el("button",{class:"btn ghost small",on:{click:()=>{screen="landing";render()}}},"‹ Home")),
+    el("div",{class:"row"},el("button",{class:"btn ghost small",on:{click:()=>{screen="landing";render()}}},"‹ Home"),grownLink()),
     readingDone()&&mathsDone()?el("section",{class:"panel alldone"},el("span",{class:"big-tick","aria-hidden":"true",text:"✓"}),
       el("div",{},el("h2",{text:"All done for today!"}),el("p",{class:"muted",text:"Reading and maths are finished. Come back tomorrow for more ducklings."}))):null,
     el("div",{class:"choices"},
@@ -1753,6 +1912,7 @@ function settingsPanel(){
     el("div",{class:"cols"},
       el("section",{class:"panel"},el("h2",{text:"Look"}),
         seg("Colour theme",[["pink","Pink",true],["blue","Blue",true],["green","Green",true]],state.palette,v=>{state.palette=v;save();render()},"lab-pal")),
+      backupPanel(),
       el("section",{class:"panel"},el("h2",{text:"Progress"}),el("p",{class:"note",text:"Clearing history keeps ⟦her⟧ ticked sounds, tricky words, book list and settings."}),confirmBox)));
 }
 
